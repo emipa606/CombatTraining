@@ -1,39 +1,27 @@
 ﻿using HugsLib;
 using HugsLib.Utils;
 
-namespace KriilMod_CD
+namespace KriilMod_CD;
+
+public class CombatTrainingController : ModBase
 {
-    public class CombatTrainingController : ModBase
+    private static ModLogger staticLogger;
+
+    public override string ModIdentifier => "CombatTraining";
+
+    protected override bool HarmonyAutoPatch => false;
+
+    internal new static ModLogger Logger
     {
-        public override string ModIdentifier
+        get
         {
-            get
+            ModLogger result;
+            if ((result = staticLogger) == null)
             {
-                return "CombatTraining";
+                result = staticLogger = new ModLogger("CombatTraining");
             }
-        }
 
-        protected override bool HarmonyAutoPatch
-        {
-            get
-            {
-                return false;
-            }
-        }
-
-        private static ModLogger staticLogger;
-
-        internal static new ModLogger Logger
-        {
-            get
-            {
-                ModLogger result;
-                if ((result = CombatTrainingController.staticLogger) == null)
-                {
-                    result = (CombatTrainingController.staticLogger = new ModLogger("CombatTraining"));
-                }
-                return result;
-            }
+            return result;
         }
     }
 }

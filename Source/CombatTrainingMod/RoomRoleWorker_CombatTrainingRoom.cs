@@ -1,26 +1,21 @@
-﻿using System.Collections.Generic;
-using Verse;
+﻿using Verse;
 
-namespace KriilMod_CD
+namespace KriilMod_CD;
+
+public class RoomRoleWorker_CombatTrainingRoom : RoomRoleWorker
 {
-    public class RoomRoleWorker_CombatTrainingRoom : RoomRoleWorker
+    public override float GetScore(Room room)
     {
-        public override float GetScore(Room room)
+        var num = 0;
+        var containedAndAdjacentThings = room.ContainedAndAdjacentThings;
+        foreach (var thing in containedAndAdjacentThings)
         {
-            int num = 0;
-            List<Thing> containedAndAdjacentThings = room.ContainedAndAdjacentThings;
-            for (int i = 0; i < containedAndAdjacentThings.Count; i++)
+            if (thing is Building_CombatDummy)
             {
-                Thing thing = containedAndAdjacentThings[i];
-
-                Building_CombatDummy combatDummy = thing as Building_CombatDummy;
-                if (combatDummy != null)
-                {
-                    num++;
-                }
-
+                num++;
             }
-            return (float)num * 5f;
         }
+
+        return num * 5f;
     }
 }

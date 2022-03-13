@@ -1,73 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>Combat Training</name>
+  <name>Combat Training (Continued)</name>
+  <packageId>Mlie.CombatTraining</packageId>
   <author>Kriil</author>
-  <url></url>
-  <supportedVersions><li>1.2</li><li>1.1</li><li>1.0</li></supportedVersions>
-  <packageId>kriil.combat</packageId>
-  <description><![CDATA[
-<size=16><b>This mod adds a new work type to let you train your combat skills.  Compatible with RimWorld [1.2]</b></size>
-
-<size=16><color=orange>Features</color></size>
-• Train your colonist's melee and shooting skills by attacking combat dummies.
-• Prioritize combat training like any other type of work.
-• Train with real weapons or craft training weapons that cause no damage.  There is no friendly fire in either case.
-• Add a combat dummy to a room to give that room the Combat Training Room role.
-• Get a mood buff for having an impressive Combat Training Room.
-
-<size=16><color=orange>Usage</color></size>
-1. Construct a combat dummy (or several).
-  a. Combat dummies are located in the Misc tab.
-2. Designate a combat dummy with the melee-only, ranged-only or both train combat designations.
-3. Open the work tab and make sure to prioritize Train Combat as desired
-4. Training knives can be created at a craft spot and smithy, while training BB rifles need to be crafted at a machining table.
-
-<size=16><color=orange>Weapon and dummy selection prority rules used when training combat:</color></size>
-• Colonists designated to train combat will automatically try and equip a training weapon if there is one near the dummy they are going to train on (the weapons don't need to be on a shelf or in a zone, though this helps keep things neat).  
-○ ○ Weapon selection takes into account the designation of the dummy (ranged-only, melee-only).
-○ ○ If the dummy has both designations, the colonist will try and pick up a training weapon of the same type that they are holding (melee or ranged).
-○ ○ If the dummy has both designations, and the colonist is not carrying a weapon, the closest training weapon to the dummy is used (regardless of type).
-○ ○ Colonists will target combat dummmies with the correct designation based on the type of weapon currently equipped.
-
-<size=16><color=orange>Misc</color></size>
-• Colonists will re-equip their original weapon after done training, unless drafted or forced to do other work.
-• While training, colonists will take a quick break to check for other jobs or satisfy needs.  This causes them to switch back to their old weapon and if there are no jobs or needs, the colonist picks up the training weapon again and continues training.
-• Colonists won't train if their skill level has been saturated for the day (4000xp).  For a colonist with burning passion, this takes about 2 hours, for a colonist with passion about 3 hours and for one with no passion, saturation takes all day.
-
-<size=16><color=red>Possible Issues and Fixes:</color></size>
-Combat dummies and training weapons have been altered a bit to add new features.  If you subscribed to the mod in between updates, combat dummies or training weapons in saved games may have the wrong attributes. Crafting a new dummy or weapon should resolve any issues.
-  
-<size=16><color=orange>Balancing</color></size>
-Combat training grants about the same xp as actual combat.  This is balanced by making it a work type. Colonists won't be doing any other work when training combat, plus it costs resources to create a dummy and training weapons.  Additionally, combat training end after skill saturation (4000xp per day for combat skills).
-
-<size=16><color=orange>Community-Made Enhancements</color></size>
-<size=16><b>Enhancement (Borattata): Pawns will no longer endlessly try to train combat once they've reached their learning saturation for the day (unless the skill decays an additional 3000xp during the day).</b></size>
-<size=16><b>Bug Fix (aph3rson): Bullets no longer echo.</b></size>
-<size=16><b>Enhancement (aph3rson): BB gun has a new slick blue color.</b></size>
-<size=16><b>Enhancement (Heremeus): Guests will no longer use the training dummies when using Hospitality mode.</b></size>
-<size=16><b>Enhancement (AtomicGu): Chinese Simplified translation added.</b></size>
-
-<size=16><color=orange>Previous Updates</color></size>
-<size=16><b>Feature: UI enhanced to allow mutiple dummies to be selected and designated</b></size>
-<size=16><b>Feature: Ranged-only\Melee-only designations added for combat dummies</b></size>
-<size=16><b>Feature: Dummy selection now takes into account the colonist's current weapon</b></size>
-<size=16><b>Feature: Weapon selection now takes into account the dummy's designation</b></size>
-<size=16><b>Bug Fix: A bug was fixed which caused pawns to not retrieve their old weapons if the designation was removed</b></size>
-
-<size=16><color=orange>Contributers</color></size>
-aph3rson, @Menhi, kfish#2446, KongMD#2541, Borattata, Heremeus and AtomicGu
-]]>
-
-  </description>
+  <url>https://github.com/emipa606/CombatTraining</url>
+  <supportedVersions>
+    <li>1.1</li>
+    <li>1.2</li>
+    <li>1.3</li>
+  </supportedVersions>
   <modDependencies>
-  <li>
-    <packageId>UnlimitedHugs.HugsLib</packageId>
-    <displayName>HugsLib</displayName>
-    <downloadUrl>https://github.com/UnlimitedHugs/RimworldHugsLib/releases/latest</downloadUrl>
-    <steamWorkshopUrl>steam://url/CommunityFilePage/818773962</steamWorkshopUrl>
-  </li>
+    <li>
+      <packageId>UnlimitedHugs.HugsLib</packageId>
+      <displayName>HugsLib</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/818773962</steamWorkshopUrl>
+      <downloadUrl>https://github.com/UnlimitedHugs/RimworldHugsLib/releases/latest</downloadUrl>
+    </li>
   </modDependencies>
   <loadAfter>
     <li>UnlimitedHugs.HugsLib</li>
   </loadAfter>
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
+Update of Kriils mod
+https://steamcommunity.com/sharedfiles/filedetails/?id=1542761308
+
+[img]https://i.imgur.com/pufA0kM.png[/img]
+
+[table]
+    [tr]
+        [td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
+        [td][url=https://github.com/emipa606/CombatTraining][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+    [/tr]
+[/table]
+	
+[img]https://i.imgur.com/Z4GOv8H.png[/img]
+[h1]This mod adds a new work type to let you train your combat skills. Compatible with RimWorld [1.2][/h1]
+
+[h1]Fix: Combat dummies no longer breakdown and require components to repair.[/h1]
+
+[h1]Features[/h1]
+ • Train your colonist's melee and shooting skills by attacking combat dummies.
+ • Prioritize combat training like any other type of work.
+ • Train with real weapons or craft training weapons that cause no damage. There is no friendly fire in either case.
+ • Add a combat dummy to a room to give that room the Combat Training Room role.
+ • Get a mood buff for having an impressive Combat Training Room.
+
+[h1]Usage[/h1]
+ 1. Construct a combat dummy (or several). 
+    a. Combat dummies are located in the Misc tab.
+ 2. Designate a combat dummy with the melee-only, ranged-only or both train combat designations.
+ 3. Open the work tab and make sure to prioritize Train Combat as desired
+ 4. Training knives can be created at a craft spot and smithy, while training BB rifles need to be crafted at a machining table.
+ 
+[h1]Weapon and dummy selection prority rules used when training combat:[/h1]
+ • Colonists designated to train combat will automatically try and equip a training weapon if there is one near the dummy they are going to train on (the weapons don't need to be on a shelf or in a zone, though this helps keep things neat).
+ • Weapon selection takes into account the designation of the dummy (ranged-only, melee-only).
+ • If the dummy has both designations, the colonist will try and pick up a training weapon of the same type that they are holding (melee or ranged).
+ • If the dummy has both designations, and the colonist is not carrying a weapon, the closest training weapon to the dummy is used (regardless of type).
+ • Colonists will target combat dummmies with the correct designation based on the type of weapon currently equipped.
+
+[h1]Misc[/h1]
+ • Colonists will re-equip their original weapon after done training, unless drafted or forced to do other work.
+ • While training, colonists will take a quick break to check for other jobs or satisfy needs. This causes them to switch back to their old weapon and if there are no jobs or needs, the colonist picks up the training weapon again and continues training.
+ • Colonists won't train if their skill level has been saturated for the day (4000xp). For a colonist with burning passion, this takes about 2 hours, for a colonist with passion about 3 hours and for one with no passion, saturation takes all day.
+
+[h1]Possible Issues and Fixes:[/h1]
+Combat dummies and training weapons have been altered a bit to add new features.  If you subscribed to the mod in between updates, combat dummies or training weapons in saved games may have the wrong attributes. Crafting a new dummy or weapon should resolve any issues.
+
+[h1]Balancing[/h1]
+Combat training grants about the same xp as actual combat. This is balanced by making it a work type. Colonists won't be doing any other work when training combat, plus it costs resources to create a dummy and training weapons. Additionally, combat training end after skill saturation (4000xp per day for combat skills).
+
+[h1]Community-Made Enhancements[/h1]
+[h1]Enhancement (Borattata): Pawns will no longer endlessly try to train combat once they've reached their learning saturation for the day (unless the skill decays an additional 3000xp during the day).[/h1] 
+[h1]Bug Fix (aph3rson): Bullets no longer echo.[/h1] 
+[h1]Enhancement (aph3rson): BB gun has a new slick blue color.[/h1] 
+[h1]Enhancement (Heremeus): Guests will no longer use the training dummies when using Hospitality mode.[/h1] 
+[h1]Enhancement (AtomicGu): Chinese Simplified translation added.[/h1]
+
+[h1]Previous Updates[/h1]
+[h1]Feature: UI enhanced to allow mutiple dummies to be selected and designated.[/h1] 
+[h1]Feature: Ranged-only\Melee-only designations added for combat dummies.[/h1] 
+[h1]Feature: Dummy selection now takes into account the colonist's current weapon.[/h1] 
+[h1]Feature: Weapon selection now takes into account the dummy's designation.[/h1] 
+[h1]Bug Fix: A bug was fixed which caused pawns to not retrieve their old weapons if the designation was removed.[\h1]
+
+[h1]Contributers[/h1]
+aph3rson, @Menhi, kfish#2446, KongMD#2541, Borattata, Heremeus and AtomicGu
+
+[img]https://i.imgur.com/PwoNOj4.png[/img]
+[list]
+[*] See if the the error persists if you just have this mod and its requirements active.
+[*] If not, try adding your other mods until it happens again.
+[*] Post your error-log using [url=https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] and command Ctrl+F12
+[*] For best support, please use the Discord-channel for error-reporting.
+[*] Do not report errors by making a discussion-thread, I get no notification of that.
+[*] If you have the solution for a problem, please post it to the GitHub repository.
+[/list]</description>
 </ModMetaData>
