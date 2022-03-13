@@ -77,7 +77,8 @@ Combat training grants about the same xp as actual combat. This is balanced by m
  
 # Feature: Weapon selection now takes into account the dummy's designation.
  
-# Bug Fix: A bug was fixed which caused pawns to not retrieve their old weapons if the designation was removed.[\h1]
+# Bug Fix: A bug was fixed which caused pawns to not retrieve their old weapons if the designation was removed.
+
 
 # Contributers
 

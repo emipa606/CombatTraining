@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using HugsLib.Utils;
 using RimWorld;
 using Verse;
@@ -9,28 +8,86 @@ namespace KriilMod_CD;
 
 public class WorkGiver_TrainCombat : WorkGiver_Scanner
 {
-    protected Func<DesignationDef, bool> getDesignationFilter(Pawn pawn)
+    public bool IsDummyUsable(Thing dummy)
     {
-        var startingEquippedWeapon = pawn.equipment.Primary;
-        Func<DesignationDef, bool> filter;
-        if (startingEquippedWeapon == null)
+        if (IsDummyBreaking(dummy))
         {
-            filter = x => x == CombatTrainingDefOf.TrainCombatDesignation ||
-                          x == CombatTrainingDefOf.TrainCombatDesignationMeleeOnly ||
-                          x == CombatTrainingDefOf.TrainCombatDesignationRangedOnly;
-        }
-        else if (startingEquippedWeapon.def.IsMeleeWeapon)
-        {
-            filter = x => x == CombatTrainingDefOf.TrainCombatDesignation ||
-                          x == CombatTrainingDefOf.TrainCombatDesignationMeleeOnly;
-        }
-        else
-        {
-            filter = x => x == CombatTrainingDefOf.TrainCombatDesignation ||
-                          x == CombatTrainingDefOf.TrainCombatDesignationRangedOnly;
+            return false;
         }
 
-        return filter;
+        if (dummy.Destroyed)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public bool IsDummyBreaking(Thing dummy)
+    {
+        return dummy.HitPoints <= dummy.MaxHitPoints * 0.5;
+    }
+
+
+    public bool IsValidJobTarget(Thing dummy, Pawn pawn)
+    {
+        if (pawn == null || dummy == null)
+        {
+            return false;
+        }
+
+        var primary = pawn.equipment.Primary;
+        if (!IsDummyUsable(dummy))
+        {
+            return false;
+        }
+
+        if (dummy.HasDesignation(CombatTrainingDefOf.TrainCombatDesignation))
+        {
+            return true;
+        }
+
+        if (dummy.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationMeleeOnly))
+        {
+            if (primary == null)
+            {
+                return true;
+            }
+
+            return primary.def.IsMeleeWeapon;
+        }
+
+        if (!dummy.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationRangedOnly))
+        {
+            return false;
+        }
+
+        if (primary == null)
+        {
+            return false;
+        }
+
+        return primary.def.IsRangedWeapon;
+    }
+
+    public bool IsValidDesignation(DesignationDef dummyDef)
+    {
+        if (dummyDef == CombatTrainingDefOf.TrainCombatDesignationMeleeOnly)
+        {
+            return true;
+        }
+
+        if (dummyDef == CombatTrainingDefOf.TrainCombatDesignationRangedOnly)
+        {
+            return true;
+        }
+
+        if (dummyDef == CombatTrainingDefOf.TrainCombatDesignation)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public override bool ShouldSkip(Pawn pawn, bool forced = false)
@@ -62,36 +119,9 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
         }
 
         LocalTargetInfo target = t;
-        if (!pawn.CanReserve(target, 1, -1, null, forced))
+        if (pawn.CanReserve(target, 1, -1, null, forced))
         {
-            return false;
-        }
-
-        var startingEquippedWeapon = pawn.equipment.Primary;
-        if (startingEquippedWeapon == null)
-        {
-            if (t.HasDesignation(CombatTrainingDefOf.TrainCombatDesignation) ||
-                t.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationMeleeOnly) ||
-                t.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationRangedOnly))
-            {
-                return true;
-            }
-        }
-        else if (startingEquippedWeapon.def.IsMeleeWeapon)
-        {
-            if (t.HasDesignation(CombatTrainingDefOf.TrainCombatDesignation) ||
-                t.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationMeleeOnly))
-            {
-                return true;
-            }
-        }
-        else
-        {
-            if (t.HasDesignation(CombatTrainingDefOf.TrainCombatDesignation) ||
-                t.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationRangedOnly))
-            {
-                return true;
-            }
+            return IsValidJobTarget(t, pawn);
         }
 
         return false;
@@ -113,11 +143,10 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
 
     public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
     {
-        var filter = getDesignationFilter(pawn);
         var desList = pawn.Map.designationManager.allDesignations;
         foreach (var des in desList)
         {
-            if (filter(des.def))
+            if (IsValidDesignation(des.def))
             {
                 yield return des.target.Thing;
             }
