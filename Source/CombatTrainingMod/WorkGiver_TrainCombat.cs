@@ -67,6 +67,11 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
             return false;
         }
 
+        if (pawn.TryGetAttackVerb(dummy)?.ApparelPreventsShooting() == true)
+        {
+            return false;
+        }
+
         return primary.def.IsRangedWeapon;
     }
 

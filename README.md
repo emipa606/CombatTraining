@@ -5,6 +5,9 @@
 Update of Kriils mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=1542761308
 
+- Added the QOL features from the unupdated https://steamcommunity.com/sharedfiles/filedetails/?id=2196035723]Combat Training - Forked by Eltech
+- For a version without the training-weapon mechanic, please use https://steamcommunity.com/sharedfiles/filedetails/?id=2570757153]Combat Training - Forked (Lite) by jastro
+
 ![Image](https://i.imgur.com/pufA0kM.png)
 
 	

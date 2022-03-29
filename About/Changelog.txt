@@ -1,5 +1,8 @@
 # Changelog for CombatTraining
 
+1.3.3 - Pawns should no longer try to train ranged combat when having a shield-belt equipped
+
+
 1.3.2 - Added the QOL features from the abandoned [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2196035723]Combat Training - Forked[/url]
 
 
