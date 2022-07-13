@@ -26,6 +26,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=1542761308
 
 - Added the QOL features from the unupdated [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2196035723]Combat Training - Forked[/url] by Eltech
 - For a version without the training-weapon mechanic, please use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2570757153]Combat Training - Forked (Lite)[/url] by jastro
+- Fixed pawns trying to train ranged combat with shield-belt equipped
 
 [img]https://i.imgur.com/pufA0kM.png[/img]
 
@@ -33,6 +34,10 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=1542761308
     [tr]
         [td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
         [td][url=https://github.com/emipa606/CombatTraining][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+    [/tr]
+    [tr]
+        [td][img]https://i.imgur.com/WjDSfUn.png[/img][/td]
+        [td][img]https://i.imgur.com/Be8E2qJ.png[/img][/td]
     [/tr]
 [/table]
 	
