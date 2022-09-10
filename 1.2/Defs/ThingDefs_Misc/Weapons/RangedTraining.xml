@@ -76,7 +76,7 @@
     <label>training bow</label>
     <description>A simple bow made from a single piece of wood.  Very weak pull and designed for shooting blunt point arrows to train ranged combat skill.</description>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponRanged/BowShort</texPath>
+      <texPath>CombatTrainingShortBow</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Bow_Small</soundInteract>

@@ -7,6 +7,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=1542761308
 
 - Added the QOL features from the unupdated https://steamcommunity.com/sharedfiles/filedetails/?id=2196035723]Combat Training - Forked by Eltech
 - For a version without the training-weapon mechanic, please use https://steamcommunity.com/sharedfiles/filedetails/?id=2570757153]Combat Training - Forked (Lite) by jastro
+- Fixed pawns trying to train ranged combat with shield-belt equipped
 
 ![Image](https://i.imgur.com/pufA0kM.png)
 
@@ -59,29 +60,19 @@ Combat training grants about the same xp as actual combat. This is balanced by m
 
 # Community-Made Enhancements
 
-# Enhancement (Borattata): Pawns will no longer endlessly try to train combat once they've reached their learning saturation for the day (unless the skill decays an additional 3000xp during the day).
- 
-# Bug Fix (aph3rson): Bullets no longer echo.
- 
-# Enhancement (aph3rson): BB gun has a new slick blue color.
- 
-# Enhancement (Heremeus): Guests will no longer use the training dummies when using Hospitality mode.
- 
-# Enhancement (AtomicGu): Chinese Simplified translation added.
-
+Enhancement (Borattata): Pawns will no longer endlessly try to train combat once they've reached their learning saturation for the day (unless the skill decays an additional 3000xp during the day).
+Bug Fix (aph3rson): Bullets no longer echo.
+Enhancement (aph3rson): BB gun has a new slick blue color.
+Enhancement (Heremeus): Guests will no longer use the training dummies when using Hospitality mode.
+Enhancement (AtomicGu): Chinese Simplified translation added.
 
 # Previous Updates
 
-# Feature: UI enhanced to allow mutiple dummies to be selected and designated.
- 
-# Feature: Ranged-only\Melee-only designations added for combat dummies.
- 
-# Feature: Dummy selection now takes into account the colonist's current weapon.
- 
-# Feature: Weapon selection now takes into account the dummy's designation.
- 
-# Bug Fix: A bug was fixed which caused pawns to not retrieve their old weapons if the designation was removed.
-
+Feature: UI enhanced to allow mutiple dummies to be selected and designated.
+Feature: Ranged-only\Melee-only designations added for combat dummies.
+Feature: Dummy selection now takes into account the colonist's current weapon.
+Feature: Weapon selection now takes into account the dummy's designation.
+Bug Fix: A bug was fixed which caused pawns to not retrieve their old weapons if the designation was removed.
 
 # Contributers
 
@@ -97,5 +88,6 @@ aph3rson, @Menhi, kfish#2446, KongMD#2541, Borattata, Heremeus and AtomicGu
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
+
 
 
