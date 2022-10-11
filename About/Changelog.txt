@@ -1,5 +1,8 @@
 # Changelog for CombatTraining
 
+1.4.1 - Mod updated for 1.4 and passed autotests
+
+
 1.3.4 - Updated graphics for the training-bow, thanks to a white guy#6735
 
 

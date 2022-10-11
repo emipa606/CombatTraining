@@ -38,7 +38,7 @@ public static class CompatibilityUtility
         }
         catch (TypeLoadException ex)
         {
-            Log.Warning("Failed to check whether ped is a guest. " + ex.Message);
+            Log.Warning($"Failed to check whether ped is a guest. {ex.Message}");
         }
 
         return isGuest;
@@ -101,11 +101,6 @@ public static class CompatibilityUtility
             return false;
         }
 
-        if (pawn.HostileTo(Faction.OfPlayer))
-        {
-            return false;
-        }
-
-        return true;
+        return !pawn.HostileTo(Faction.OfPlayer);
     }
 }

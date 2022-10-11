@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using HugsLib.Utils;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -15,12 +14,7 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
             return false;
         }
 
-        if (dummy.Destroyed)
-        {
-            return false;
-        }
-
-        return true;
+        return !dummy.Destroyed;
     }
 
     public bool IsDummyBreaking(Thing dummy)
@@ -42,22 +36,17 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
             return false;
         }
 
-        if (dummy.HasDesignation(CombatTrainingDefOf.TrainCombatDesignation))
+        if (CombatTrainingController.HasDesignation(dummy, CombatTrainingDefOf.TrainCombatDesignation))
         {
             return true;
         }
 
-        if (dummy.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationMeleeOnly))
+        if (CombatTrainingController.HasDesignation(dummy, CombatTrainingDefOf.TrainCombatDesignationMeleeOnly))
         {
-            if (primary == null)
-            {
-                return true;
-            }
-
-            return primary.def.IsMeleeWeapon;
+            return primary == null || primary.def.IsMeleeWeapon;
         }
 
-        if (!dummy.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationRangedOnly))
+        if (!CombatTrainingController.HasDesignation(dummy, CombatTrainingDefOf.TrainCombatDesignationRangedOnly))
         {
             return false;
         }
@@ -67,12 +56,7 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
             return false;
         }
 
-        if (pawn.TryGetAttackVerb(dummy)?.ApparelPreventsShooting() == true)
-        {
-            return false;
-        }
-
-        return primary.def.IsRangedWeapon;
+        return pawn.TryGetAttackVerb(dummy)?.ApparelPreventsShooting() != true && primary.def.IsRangedWeapon;
     }
 
     public bool IsValidDesignation(DesignationDef dummyDef)
@@ -87,12 +71,7 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
             return true;
         }
 
-        if (dummyDef == CombatTrainingDefOf.TrainCombatDesignation)
-        {
-            return true;
-        }
-
-        return false;
+        return dummyDef == CombatTrainingDefOf.TrainCombatDesignation;
     }
 
     public override bool ShouldSkip(Pawn pawn, bool forced = false)
@@ -102,12 +81,7 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
             return true;
         }
 
-        if (forced)
-        {
-            return pawn.WorkTagIsDisabled(WorkTags.Violent);
-        }
-
-        return CombatTrainingTracker.ShouldSkipCombatTraining(pawn);
+        return forced ? pawn.WorkTagIsDisabled(WorkTags.Violent) : CombatTrainingTracker.ShouldSkipCombatTraining(pawn);
     }
 
     public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
@@ -124,12 +98,7 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
         }
 
         LocalTargetInfo target = t;
-        if (pawn.CanReserve(target, 1, -1, null, forced))
-        {
-            return IsValidJobTarget(t, pawn);
-        }
-
-        return false;
+        return pawn.CanReserve(target, 1, -1, null, forced) && IsValidJobTarget(t, pawn);
     }
 
     public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
@@ -148,7 +117,7 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
 
     public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
     {
-        var desList = pawn.Map.designationManager.allDesignations;
+        var desList = pawn.Map.designationManager.AllDesignations;
         foreach (var des in desList)
         {
             if (IsValidDesignation(des.def))

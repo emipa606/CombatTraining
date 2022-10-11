@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using HugsLib.Utils;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -27,12 +26,7 @@ public class JobDriver_TrainCombat : JobDriver
 
     public override string GetReport()
     {
-        if (Dummy != null)
-        {
-            return job.def.reportString.Replace("TargetA", Dummy.LabelShort);
-        }
-
-        return base.GetReport();
+        return Dummy != null ? job.def.reportString.Replace("TargetA", Dummy.LabelShort) : base.GetReport();
     }
 
     public override bool TryMakePreToilReservations(bool errorOnFailed)
@@ -52,12 +46,7 @@ public class JobDriver_TrainCombat : JobDriver
             return false;
         }
 
-        if (Dummy.Destroyed)
-        {
-            return false;
-        }
-
-        return true;
+        return !Dummy.Destroyed;
     }
 
     public bool IsJobPossible()
@@ -72,27 +61,24 @@ public class JobDriver_TrainCombat : JobDriver
             return false;
         }
 
-        if (TargetThingA.HasDesignation(CombatTrainingDefOf.TrainCombatDesignation))
+        if (CombatTrainingController.HasDesignation(TargetThingA, CombatTrainingDefOf.TrainCombatDesignation))
         {
             return true;
         }
 
         if (pawn.equipment.Primary == null)
         {
-            return TargetThingA.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationMeleeOnly);
+            return CombatTrainingController.HasDesignation(TargetThingA,
+                CombatTrainingDefOf.TrainCombatDesignationMeleeOnly);
         }
 
-        if (TargetThingA.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationMeleeOnly))
+        if (CombatTrainingController.HasDesignation(TargetThingA, CombatTrainingDefOf.TrainCombatDesignationMeleeOnly))
         {
             return pawn.equipment.Primary.def.IsMeleeWeapon;
         }
 
-        if (TargetThingA.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationRangedOnly))
-        {
-            return pawn.equipment.Primary.def.IsRangedWeapon;
-        }
-
-        return false;
+        return CombatTrainingController.HasDesignation(TargetThingA,
+            CombatTrainingDefOf.TrainCombatDesignationRangedOnly) && pawn.equipment.Primary.def.IsRangedWeapon;
     }
 
     public bool IsTimeLimitReached()
@@ -107,12 +93,7 @@ public class JobDriver_TrainCombat : JobDriver
             return true;
         }
 
-        if (!IsJobPossible())
-        {
-            return true;
-        }
-
-        return false;
+        return !IsJobPossible();
     }
 
     [DebuggerHidden]
@@ -328,20 +309,24 @@ public class JobDriver_TrainCombat : JobDriver
         }
 
         // If the pawn does not have a weapon, and the dummy is restricted, look for the appropriate weapon type.
-        if (currentWeapon == null && !TargetThingA.HasDesignation(CombatTrainingDefOf.TrainCombatDesignation))
+        if (currentWeapon == null &&
+            !CombatTrainingController.HasDesignation(TargetThingA, CombatTrainingDefOf.TrainCombatDesignation))
         {
-            if (TargetThingA.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationMeleeOnly))
+            if (CombatTrainingController.HasDesignation(TargetThingA,
+                    CombatTrainingDefOf.TrainCombatDesignationMeleeOnly))
             {
                 nearestTrainingWeapon = GetNearestTrainingWeaponMelee();
             }
-            else if (TargetThingA.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationRangedOnly))
+            else if (CombatTrainingController.HasDesignation(TargetThingA,
+                         CombatTrainingDefOf.TrainCombatDesignationRangedOnly))
             {
                 nearestTrainingWeapon = GetNearestTrainingWeaponRanged();
             }
         }
 
         // If the pawn does not have a weapon, and the dummy is not restricted, look for the closest training weapon of any kind.
-        if (currentWeapon != null || !TargetThingA.HasDesignation(CombatTrainingDefOf.TrainCombatDesignation))
+        if (currentWeapon != null ||
+            !CombatTrainingController.HasDesignation(TargetThingA, CombatTrainingDefOf.TrainCombatDesignation))
         {
             return nearestTrainingWeapon;
         }

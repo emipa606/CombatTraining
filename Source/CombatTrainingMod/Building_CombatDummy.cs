@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using HugsLib.Utils;
 using RimWorld;
 using Verse;
 
@@ -21,15 +20,15 @@ public class Building_CombatDummy : Building
 
     public override void PostMapInit()
     {
-        if (this.HasDesignation(CombatTrainingDefOf.TrainCombatDesignation))
+        if (CombatTrainingController.HasDesignation(this, CombatTrainingDefOf.TrainCombatDesignation))
         {
             trainingType = TrainingTypes.Any;
         }
-        else if (this.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationMeleeOnly))
+        else if (CombatTrainingController.HasDesignation(this, CombatTrainingDefOf.TrainCombatDesignationMeleeOnly))
         {
             trainingType = TrainingTypes.Melee;
         }
-        else if (this.HasDesignation(CombatTrainingDefOf.TrainCombatDesignationRangedOnly))
+        else if (CombatTrainingController.HasDesignation(this, CombatTrainingDefOf.TrainCombatDesignationRangedOnly))
         {
             trainingType = TrainingTypes.Ranged;
         }
@@ -37,21 +36,23 @@ public class Building_CombatDummy : Building
 
     protected void determineDesignation()
     {
-        this.ToggleDesignation(CombatTrainingDefOf.TrainCombatDesignation, false);
-        this.ToggleDesignation(CombatTrainingDefOf.TrainCombatDesignationMeleeOnly, false);
-        this.ToggleDesignation(CombatTrainingDefOf.TrainCombatDesignationRangedOnly, false);
+        CombatTrainingController.ToggleDesignation(this, CombatTrainingDefOf.TrainCombatDesignation, false);
+        CombatTrainingController.ToggleDesignation(this, CombatTrainingDefOf.TrainCombatDesignationMeleeOnly, false);
+        CombatTrainingController.ToggleDesignation(this, CombatTrainingDefOf.TrainCombatDesignationRangedOnly, false);
         switch (trainingType)
         {
             case TrainingTypes.None:
                 break;
             case TrainingTypes.Melee:
-                this.ToggleDesignation(CombatTrainingDefOf.TrainCombatDesignationMeleeOnly, true);
+                CombatTrainingController.ToggleDesignation(this, CombatTrainingDefOf.TrainCombatDesignationMeleeOnly,
+                    true);
                 break;
             case TrainingTypes.Ranged:
-                this.ToggleDesignation(CombatTrainingDefOf.TrainCombatDesignationRangedOnly, true);
+                CombatTrainingController.ToggleDesignation(this, CombatTrainingDefOf.TrainCombatDesignationRangedOnly,
+                    true);
                 break;
             case TrainingTypes.Any:
-                this.ToggleDesignation(CombatTrainingDefOf.TrainCombatDesignation, true);
+                CombatTrainingController.ToggleDesignation(this, CombatTrainingDefOf.TrainCombatDesignation, true);
                 break;
         }
     }

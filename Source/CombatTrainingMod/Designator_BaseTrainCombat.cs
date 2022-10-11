@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using HugsLib.Utils;
 using RimWorld;
 using Verse;
 
@@ -59,12 +58,7 @@ public class Designator_BaseTrainCombat : Designator
             return false;
         }
 
-        if (IsCombatDummy(t) && !t.HasDesignation(defOf))
-        {
-            return true;
-        }
-
-        return false;
+        return IsCombatDummy(t) && !CombatTrainingController.HasDesignation(t, defOf);
     }
 
     /*
@@ -92,7 +86,7 @@ public class Designator_BaseTrainCombat : Designator
     {
         if (t != null)
         {
-            t.ToggleDesignation(defOf, true);
+            CombatTrainingController.ToggleDesignation(t, defOf, true);
         }
     }
 

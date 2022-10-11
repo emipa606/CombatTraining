@@ -105,12 +105,7 @@ public static class CombatTrainingTracker
             return melee;
         }
 
-        if (weapon.def.IsRangedWeapon)
-        {
-            return shooting;
-        }
-
-        return melee;
+        return weapon.def.IsRangedWeapon ? shooting : melee;
     }
 
     private static SkillXpValues GetLastSkillXpValues(Pawn pawn)
@@ -122,11 +117,6 @@ public static class CombatTrainingTracker
             return PawnShootingSkillValues[pawn.ThingID];
         }
 
-        if (PawnMeleeSkillValues.ContainsKey(pawn.ThingID))
-        {
-            return PawnMeleeSkillValues[pawn.ThingID];
-        }
-
-        return null;
+        return PawnMeleeSkillValues.ContainsKey(pawn.ThingID) ? PawnMeleeSkillValues[pawn.ThingID] : null;
     }
 }
