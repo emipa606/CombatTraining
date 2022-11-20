@@ -220,10 +220,13 @@ public class JobDriver_TrainCombat : JobDriver
 
     private bool LearningSaturated()
     {
-        var verbToUse = pawn.jobs.curJob.verbToUse;
+        //var verbToUse = pawn.jobs.curJob.verbToUse;
         var saturated = false;
 
-        var skill = pawn.skills.GetSkill(verbToUse.verbProps.IsMeleeAttack ? SkillDefOf.Melee : SkillDefOf.Shooting);
+        //var skill = pawn.skills.GetSkill(verbToUse.verbProps.IsMeleeAttack ? SkillDefOf.Melee : SkillDefOf.Shooting);
+        var skill = pawn.skills.GetSkill(pawn.equipment.Primary.def.IsRangedWeapon
+            ? SkillDefOf.Shooting
+            : SkillDefOf.Melee);
 
         if (skill.LearningSaturatedToday ||
             skill.Level == 20 && skill.xpSinceLastLevel >= skill.XpRequiredForLevelUp - 1)
@@ -241,15 +244,22 @@ public class JobDriver_TrainCombat : JobDriver
     {
         var verbToUse = pawn.jobs.curJob.verbToUse;
         var xpGained = CalculateXp(verbToUse, pawn);
-        if (verbToUse.verbProps.IsMeleeAttack)
+        try
         {
-            pawn.skills.Learn(SkillDefOf.Melee, xpGained);
-            CombatTrainingTracker.TrackPawnMeleeSkill(pawn, pawn.skills.GetSkill(SkillDefOf.Melee));
+            if (verbToUse.verbProps.IsMeleeAttack)
+            {
+                pawn.skills.Learn(SkillDefOf.Melee, xpGained);
+                CombatTrainingTracker.TrackPawnMeleeSkill(pawn, pawn.skills.GetSkill(SkillDefOf.Melee));
+            }
+            else
+            {
+                pawn.skills.Learn(SkillDefOf.Shooting, xpGained);
+                CombatTrainingTracker.TrackPawnShootingSkill(pawn, pawn.skills.GetSkill(SkillDefOf.Shooting));
+            }
         }
-        else
+        catch
         {
-            pawn.skills.Learn(SkillDefOf.Shooting, xpGained);
-            CombatTrainingTracker.TrackPawnShootingSkill(pawn, pawn.skills.GetSkill(SkillDefOf.Shooting));
+            // Cannot learn any more
         }
     }
 
