@@ -224,7 +224,7 @@ public class JobDriver_TrainCombat : JobDriver
         var saturated = false;
 
         //var skill = pawn.skills.GetSkill(verbToUse.verbProps.IsMeleeAttack ? SkillDefOf.Melee : SkillDefOf.Shooting);
-        var skill = pawn.skills.GetSkill(pawn.equipment.Primary.def.IsRangedWeapon
+        var skill = pawn.skills.GetSkill(pawn.equipment?.Primary?.def?.IsRangedWeapon == true
             ? SkillDefOf.Shooting
             : SkillDefOf.Melee);
 
