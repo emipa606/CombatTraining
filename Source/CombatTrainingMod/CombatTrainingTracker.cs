@@ -112,11 +112,12 @@ public static class CombatTrainingTracker
     {
         var weapon = pawn.equipment.Primary;
 
-        if (weapon != null && weapon.def.IsRangedWeapon && PawnShootingSkillValues.ContainsKey(pawn.ThingID))
+        if (weapon != null && weapon.def.IsRangedWeapon &&
+            PawnShootingSkillValues.TryGetValue(pawn.ThingID, out var values))
         {
-            return PawnShootingSkillValues[pawn.ThingID];
+            return values;
         }
 
-        return PawnMeleeSkillValues.ContainsKey(pawn.ThingID) ? PawnMeleeSkillValues[pawn.ThingID] : null;
+        return PawnMeleeSkillValues.TryGetValue(pawn.ThingID, out var value) ? value : null;
     }
 }

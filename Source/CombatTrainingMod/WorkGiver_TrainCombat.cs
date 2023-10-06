@@ -56,7 +56,60 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
             return false;
         }
 
-        return pawn.TryGetAttackVerb(dummy)?.ApparelPreventsShooting() != true && primary.def.IsRangedWeapon;
+        if (!primary.def.IsRangedWeapon)
+        {
+            return false;
+        }
+
+        var verb = pawn.TryGetAttackVerb(dummy);
+
+        if (verb == null)
+        {
+            return false;
+        }
+
+        if (verb.IsEMP())
+        {
+            return false;
+        }
+
+        if (verb.IsIncendiary_Ranged())
+        {
+            return false;
+        }
+
+        if (verb.UsesExplosiveProjectiles())
+        {
+            return false;
+        }
+
+        if (verb.verbProps.ai_IsBuildingDestroyer)
+        {
+            return false;
+        }
+
+        if (primary.def.destroyOnDrop)
+        {
+            return false;
+        }
+
+        if (verb is Verb_ShootOneUse)
+        {
+            return false;
+        }
+
+        if (primary.def.thingCategories?.Any(d =>
+                d == DefDatabase<ThingCategoryDef>.GetNamed("Grenades")) == true)
+        {
+            return false;
+        }
+
+        if (primary.def.thingSetMakerTags?.Contains("SingleUseWeapon") == true)
+        {
+            return false;
+        }
+
+        return verb.ApparelPreventsShooting() != true;
     }
 
     public bool IsValidDesignation(DesignationDef dummyDef)

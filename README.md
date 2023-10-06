@@ -1,6 +1,5 @@
 # CombatTraining
 
-
 ![Image](https://i.imgur.com/buuPQel.png)
 
 Update of Kriils mod
@@ -91,4 +90,6 @@ aph3rson, @Menhi, kfish#2446, KongMD#2541, Borattata, Heremeus and AtomicGu
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2778569619]Last updated 2022-11-27
+
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2778569619]![Image](https://img.shields.io/github/v/release/emipa606/CombatTraining?label=latest%20version&style=plastic&color=9f1111&labelColor=black)
+

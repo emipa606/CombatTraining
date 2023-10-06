@@ -12,8 +12,7 @@
   </supportedVersions>
   <modDependencies />
   <loadAfter />
-  <description>
-[img]https://i.imgur.com/buuPQel.png[/img]
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
 Update of Kriils mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=1542761308
 
@@ -25,7 +24,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=1542761308
 
 [table]
     [tr]
-        [td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
+        [td][url=https://dsc.gg/mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
         [td][url=https://github.com/emipa606/CombatTraining][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
     [/tr]
     [tr]
@@ -97,5 +96,6 @@ aph3rson, @Menhi, kfish#2446, KongMD#2541, Borattata, Heremeus and AtomicGu
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
 [/list]
-[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2778569619]Last updated 2022-11-27[/url]</description>
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2778569619][img]https://img.shields.io/github/v/release/emipa606/CombatTraining?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url]</description>
 </ModMetaData>
