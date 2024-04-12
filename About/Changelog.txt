@@ -1,5 +1,8 @@
 # Changelog for CombatTraining
 
+1.5.0 - Updated for 1.5
+
+
 1.4.4 - Ranged training will no longer try to use singe-use weapons, explosive weapons, emp grenades etc.
 
 

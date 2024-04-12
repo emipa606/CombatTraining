@@ -9,8 +9,8 @@ public class Designator_BaseTrainCombat : Designator
     protected DesignationDef defOf = null;
 
     /*
-    * Default constructor 
-    */
+     * Default constructor
+     */
     public Designator_BaseTrainCombat()
     {
         soundDragSustain = SoundDefOf.Designate_DragStandard;

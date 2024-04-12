@@ -1,15 +1,8 @@
 ﻿namespace KriilMod_CD;
 
-public class SkillXpValues
+public class SkillXpValues(int dayOfYear, float xpSinceMidnight, float xpSinceLastLevel)
 {
-    public int DayOfYear;
-    public float XpSinceLastLevel;
-    public float XpSinceMidnight;
-
-    public SkillXpValues(int dayOfYear, float xpSinceMidnight, float xpSinceLastLevel)
-    {
-        DayOfYear = dayOfYear;
-        XpSinceMidnight = xpSinceMidnight;
-        XpSinceLastLevel = xpSinceLastLevel;
-    }
+    public readonly int DayOfYear = dayOfYear;
+    public readonly float XpSinceLastLevel = xpSinceLastLevel;
+    public readonly float XpSinceMidnight = xpSinceMidnight;
 }

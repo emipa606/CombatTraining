@@ -118,6 +118,6 @@ public static class CombatTrainingTracker
             return values;
         }
 
-        return PawnMeleeSkillValues.TryGetValue(pawn.ThingID, out var value) ? value : null;
+        return PawnMeleeSkillValues.GetValueOrDefault(pawn.ThingID);
     }
 }

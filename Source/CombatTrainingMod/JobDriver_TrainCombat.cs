@@ -259,7 +259,7 @@ public class JobDriver_TrainCombat : JobDriver
         }
         catch
         {
-            // Cannot learn any more
+            // Cannot learn anymore
         }
     }
 
@@ -298,7 +298,7 @@ public class JobDriver_TrainCombat : JobDriver
         return thingWithComps;
     }
 
-    /* 
+    /*
      * Returns the nearest training weapon.  Enforces training weapons of the same type (melee or ranged) of the
      * weapon passed in, unless the pawn is unarmed.
      */
@@ -353,7 +353,7 @@ public class JobDriver_TrainCombat : JobDriver
     }
 
     /*
-     * Returns a toil that equips the target index weapon 
+     * Returns a toil that equips the target index weapon
      */
     private Toil CreateEquipToil(TargetIndex index)
     {
