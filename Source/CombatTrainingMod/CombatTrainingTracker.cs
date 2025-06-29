@@ -16,25 +16,23 @@ namespace KriilMod_CD;
 /// </summary>
 public static class CombatTrainingTracker
 {
-    private static readonly Dictionary<string, SkillXpValues> PawnMeleeSkillValues =
-        new Dictionary<string, SkillXpValues>();
+    private static readonly Dictionary<string, SkillXpValues> pawnMeleeSkillValues = new();
 
-    private static readonly Dictionary<string, SkillXpValues> PawnShootingSkillValues =
-        new Dictionary<string, SkillXpValues>();
+    private static readonly Dictionary<string, SkillXpValues> pawnShootingSkillValues = new();
 
     // TrackPawnMeleeSkill and TrackPawnShootingSkill are expected to be called when the pawn's combat training xp is updated.
     // They store the pawn's combat xp for use in ShouldSkipCombatTraining.
     public static void TrackPawnMeleeSkill(Pawn pawn, SkillRecord skill)
     {
         var dayOfYear = GenLocalDate.DayOfYear(pawn);
-        PawnMeleeSkillValues[pawn.ThingID] =
+        pawnMeleeSkillValues[pawn.ThingID] =
             new SkillXpValues(dayOfYear, skill.xpSinceMidnight, skill.xpSinceLastLevel);
     }
 
     public static void TrackPawnShootingSkill(Pawn pawn, SkillRecord skill)
     {
         var dayOfYear = GenLocalDate.DayOfYear(pawn);
-        PawnShootingSkillValues[pawn.ThingID] =
+        pawnShootingSkillValues[pawn.ThingID] =
             new SkillXpValues(dayOfYear, skill.xpSinceMidnight, skill.xpSinceLastLevel);
     }
 
@@ -43,7 +41,7 @@ public static class CombatTrainingTracker
         // Reset the pawn's skill values if it is a new day.
         ClearYesterdaysSkillValues(pawn);
 
-        var skill = GetCurrentSkill(pawn);
+        var skill = getCurrentSkill(pawn);
 
         // Skip training if the max full rate xp has been reached today.
         if (skill.xpSinceMidnight > SkillRecord.MaxFullRateXpPerDay)
@@ -53,7 +51,7 @@ public static class CombatTrainingTracker
 
         // If the pawn has already trained today then it will have a SkillXpValues object.
         // If it does not then it has not trained today, so do not skip training.
-        var lastSkillXpValues = GetLastSkillXpValues(pawn);
+        var lastSkillXpValues = getLastSkillXpValues(pawn);
         if (lastSkillXpValues == null)
         {
             return false;
@@ -82,19 +80,19 @@ public static class CombatTrainingTracker
         // done by using midnight in the pawn's local time. See Pawn_SkillTracker::SkillsTick()
         // Here the day is used instead of the hour because it is not guaranteed that the job will be checked every hour, or even every day.
         var dayOfYear = GenLocalDate.DayOfYear(pawn);
-        if (PawnMeleeSkillValues.ContainsKey(pawn.ThingID) && PawnMeleeSkillValues[pawn.ThingID].DayOfYear != dayOfYear)
+        if (pawnMeleeSkillValues.ContainsKey(pawn.ThingID) && pawnMeleeSkillValues[pawn.ThingID].DayOfYear != dayOfYear)
         {
-            PawnMeleeSkillValues.Remove(pawn.ThingID);
+            pawnMeleeSkillValues.Remove(pawn.ThingID);
         }
 
-        if (PawnShootingSkillValues.ContainsKey(pawn.ThingID) &&
-            PawnShootingSkillValues[pawn.ThingID].DayOfYear != dayOfYear)
+        if (pawnShootingSkillValues.ContainsKey(pawn.ThingID) &&
+            pawnShootingSkillValues[pawn.ThingID].DayOfYear != dayOfYear)
         {
-            PawnShootingSkillValues.Remove(pawn.ThingID);
+            pawnShootingSkillValues.Remove(pawn.ThingID);
         }
     }
 
-    private static SkillRecord GetCurrentSkill(Pawn pawn)
+    private static SkillRecord getCurrentSkill(Pawn pawn)
     {
         var shooting = pawn.skills.GetSkill(SkillDefOf.Shooting);
         var melee = pawn.skills.GetSkill(SkillDefOf.Melee);
@@ -108,16 +106,16 @@ public static class CombatTrainingTracker
         return weapon.def.IsRangedWeapon ? shooting : melee;
     }
 
-    private static SkillXpValues GetLastSkillXpValues(Pawn pawn)
+    private static SkillXpValues getLastSkillXpValues(Pawn pawn)
     {
         var weapon = pawn.equipment.Primary;
 
         if (weapon != null && weapon.def.IsRangedWeapon &&
-            PawnShootingSkillValues.TryGetValue(pawn.ThingID, out var values))
+            pawnShootingSkillValues.TryGetValue(pawn.ThingID, out var values))
         {
             return values;
         }
 
-        return PawnMeleeSkillValues.GetValueOrDefault(pawn.ThingID);
+        return pawnMeleeSkillValues.GetValueOrDefault(pawn.ThingID);
     }
 }

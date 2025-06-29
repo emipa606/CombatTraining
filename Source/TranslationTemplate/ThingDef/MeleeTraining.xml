@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: training knife -->
+  <MeleeWeapon_TrainingKnife.label>training knife</MeleeWeapon_TrainingKnife.label>
+  <!-- EN: A wooden knife with a dull wooden blade used for training melee combat skills. -->
+  <MeleeWeapon_TrainingKnife.description>A wooden knife with a dull wooden blade used for training melee combat skills.</MeleeWeapon_TrainingKnife.description>
+  <!-- EN: handle -->
+  <MeleeWeapon_TrainingKnife.tools.handle.label>handle</MeleeWeapon_TrainingKnife.tools.handle.label>
+  <!-- EN: blade -->
+  <MeleeWeapon_TrainingKnife.tools.blade.label>blade</MeleeWeapon_TrainingKnife.tools.blade.label>
+  <!-- EN: point -->
+  <MeleeWeapon_TrainingKnife.tools.point.label>point</MeleeWeapon_TrainingKnife.tools.point.label>
+</LanguageData>

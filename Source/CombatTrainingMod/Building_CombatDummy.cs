@@ -7,16 +7,7 @@ namespace KriilMod_CD;
 
 public class Building_CombatDummy : Building
 {
-    [Flags]
-    public enum TrainingTypes
-    {
-        None = 0,
-        Melee = 1,
-        Ranged = 2,
-        Any = 3
-    }
-
-    public TrainingTypes trainingType = TrainingTypes.None;
+    private TrainingTypes trainingType = TrainingTypes.None;
 
     public override void PostMapInit()
     {
@@ -34,7 +25,7 @@ public class Building_CombatDummy : Building
         }
     }
 
-    protected void determineDesignation()
+    private void determineDesignation()
     {
         CombatTrainingController.ToggleDesignation(this, CombatTrainingDefOf.TrainCombatDesignation, false);
         CombatTrainingController.ToggleDesignation(this, CombatTrainingDefOf.TrainCombatDesignationMeleeOnly, false);
@@ -90,5 +81,14 @@ public class Building_CombatDummy : Building
             icon = TexCommand.Attack,
             defaultLabel = "CommandTrainCombatRangedOnlyLabel".Translate()
         };
+    }
+
+    [Flags]
+    private enum TrainingTypes
+    {
+        None = 0,
+        Melee = 1,
+        Ranged = 2,
+        Any = 3
     }
 }

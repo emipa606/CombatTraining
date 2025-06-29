@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: melee training weapons -->
+  <MeleeTrainingWeapons.label>melee training weapons</MeleeTrainingWeapons.label>
+  <!-- EN: ranged training weapons -->
+  <RangedTrainingWeapons.label>ranged training weapons</RangedTrainingWeapons.label>
+  <!-- EN: training weapons -->
+  <TrainingWeapons.label>training weapons</TrainingWeapons.label>
+</LanguageData>

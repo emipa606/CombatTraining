@@ -7,7 +7,7 @@ namespace KriilMod_CD;
 
 public class WorkGiver_TrainCombat : WorkGiver_Scanner
 {
-    public bool IsDummyUsable(Thing dummy)
+    private bool isDummyUsable(Thing dummy)
     {
         if (IsDummyBreaking(dummy))
         {
@@ -17,13 +17,13 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
         return !dummy.Destroyed;
     }
 
-    public bool IsDummyBreaking(Thing dummy)
+    private static bool IsDummyBreaking(Thing dummy)
     {
         return dummy.HitPoints <= dummy.MaxHitPoints * 0.5;
     }
 
 
-    public bool IsValidJobTarget(Thing dummy, Pawn pawn)
+    private bool isValidJobTarget(Thing dummy, Pawn pawn)
     {
         if (pawn == null || dummy == null)
         {
@@ -31,7 +31,7 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
         }
 
         var primary = pawn.equipment.Primary;
-        if (!IsDummyUsable(dummy))
+        if (!isDummyUsable(dummy))
         {
             return false;
         }
@@ -109,10 +109,10 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
             return false;
         }
 
-        return verb.ApparelPreventsShooting() != true;
+        return !verb.ApparelPreventsShooting();
     }
 
-    public bool IsValidDesignation(DesignationDef dummyDef)
+    private static bool isValidDesignation(DesignationDef dummyDef)
     {
         if (dummyDef == CombatTrainingDefOf.TrainCombatDesignationMeleeOnly)
         {
@@ -151,7 +151,7 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
         }
 
         LocalTargetInfo target = t;
-        return pawn.CanReserve(target, 1, -1, null, forced) && IsValidJobTarget(t, pawn);
+        return pawn.CanReserve(target, 1, -1, null, forced) && isValidJobTarget(t, pawn);
     }
 
     public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
@@ -173,7 +173,7 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
         var desList = pawn.Map.designationManager.AllDesignations;
         foreach (var des in desList)
         {
-            if (IsValidDesignation(des.def))
+            if (isValidDesignation(des.def))
             {
                 yield return des.target.Thing;
             }

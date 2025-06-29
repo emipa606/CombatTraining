@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Train shooting and melee skills on a combat dummy. Select a combat dummy and click Train Combat or use <b>Architect > Orders > Train Combat</b> to designate combat dummies to practice on.\nAdded by the Combat Training mod. -->
+  <TrainingCombat.description>Train shooting and melee skills on a combat dummy. Select a combat dummy and click Train Combat or use &lt;b>Architect > Orders > Train Combat&lt;/b> to designate combat dummies to practice on.
+Added by the Combat Training mod.</TrainingCombat.description>
+  <!-- EN: training combat -->
+  <TrainingCombat.gerundLabel>training combat</TrainingCombat.gerundLabel>
+  <!-- EN: Train Combat -->
+  <TrainingCombat.labelShort>Train Combat</TrainingCombat.labelShort>
+  <!-- EN: Combat trainer -->
+  <TrainingCombat.pawnLabel>Combat trainer</TrainingCombat.pawnLabel>
+  <!-- EN: train combat -->
+  <TrainingCombat.verb>train combat</TrainingCombat.verb>
+</LanguageData>

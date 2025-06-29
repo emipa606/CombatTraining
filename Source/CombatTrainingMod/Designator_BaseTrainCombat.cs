@@ -11,7 +11,7 @@ public class Designator_BaseTrainCombat : Designator
     /*
      * Default constructor
      */
-    public Designator_BaseTrainCombat()
+    protected Designator_BaseTrainCombat()
     {
         soundDragSustain = SoundDefOf.Designate_DragStandard;
         soundDragChanged = SoundDefOf.Designate_DragStandard_Changed;
@@ -20,7 +20,7 @@ public class Designator_BaseTrainCombat : Designator
         hotKey = KeyBindingDefOf.Misc9;
     }
 
-    public override int DraggableDimensions => 2;
+    public override DrawStyleCategoryDef DrawStyleCategory => DrawStyleCategoryDefOf.Orders;
 
     /*
      * Designates a thing at the given cell.  Checks are made to ensure that a thing at the given cell can be designated with the TrainCombatDesignation
@@ -34,7 +34,7 @@ public class Designator_BaseTrainCombat : Designator
     /*
      * Returns the thing at the given location if it can be designated
      */
-    public Thing GetDesignatable(IntVec3 loc)
+    private Thing GetDesignatable(IntVec3 loc)
     {
         var thingList = loc.GetThingList(Map);
         foreach (var thing in thingList)
@@ -58,7 +58,7 @@ public class Designator_BaseTrainCombat : Designator
             return false;
         }
 
-        return IsCombatDummy(t) && !CombatTrainingController.HasDesignation(t, defOf);
+        return isCombatDummy(t) && !CombatTrainingController.HasDesignation(t, defOf);
     }
 
     /*
@@ -103,7 +103,7 @@ public class Designator_BaseTrainCombat : Designator
         DesignatorUtility.RenderHighlightOverSelectableThings(this, dragCells);
     }
 
-    private bool IsCombatDummy(Thing t)
+    private static bool isCombatDummy(Thing t)
     {
         return typeof(Building_CombatDummy).IsAssignableFrom(t.def.thingClass);
     }

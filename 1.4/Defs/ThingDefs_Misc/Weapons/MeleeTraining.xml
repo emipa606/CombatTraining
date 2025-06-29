@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <ThingDef ParentName="BaseMeleeTrainingWeapon_Sharp">
     <defName>MeleeWeapon_TrainingKnife</defName>

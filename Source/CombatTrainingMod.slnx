@@ -1,0 +1,6 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="CombatTrainingMod/CombatTrainingMod.csproj" Type="d8659606-dece-48ac-a52c-0c19e6f70aff" />
+</Solution>

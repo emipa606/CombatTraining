@@ -10,12 +10,13 @@ namespace KriilMod_CD;
 [StaticConstructorOnStartup]
 public static class CompatibilityUtility
 {
-    public static readonly bool HospitalityEnabled = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "Hospitality");
+    private static readonly bool hospitalityEnabled =
+        ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "Hospitality");
 
     public static bool IsGuest(Pawn pawn)
     {
         var isGuest = false;
-        if (!HospitalityEnabled)
+        if (!hospitalityEnabled)
         {
             return false;
         }
@@ -25,7 +26,7 @@ public static class CompatibilityUtility
             isGuest = ((Func<bool>)(() =>
             {
                 // Copied from Hospitality.GuestUtility
-                if (!IsValidGuestPawn(pawn))
+                if (!isValidGuestPawn(pawn))
                 {
                     return false;
                 }
@@ -44,7 +45,7 @@ public static class CompatibilityUtility
         return isGuest;
     }
 
-    private static bool IsValidGuestPawn(this Pawn pawn)
+    private static bool isValidGuestPawn(this Pawn pawn)
     {
         if (pawn == null)
         {

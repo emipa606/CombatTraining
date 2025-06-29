@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: blunt point arrow -->
+  <Arrow_BluntPoint.label>blunt point arrow</Arrow_BluntPoint.label>
+  <!-- EN: training bow -->
+  <Bow_TrainingShort.label>training bow</Bow_TrainingShort.label>
+  <!-- EN: A simple bow made from a single piece of wood.  Very weak pull and designed for shooting blunt point arrows to train ranged combat skill. -->
+  <Bow_TrainingShort.description>A simple bow made from a single piece of wood.  Very weak pull and designed for shooting blunt point arrows to train ranged combat skill.</Bow_TrainingShort.description>
+  <!-- EN: limb -->
+  <Bow_TrainingShort.tools.limb.label>limb</Bow_TrainingShort.tools.limb.label>
+  <!-- EN: training bow -->
+  <Bow_TrainingShort.verbs.Verb_Shoot.label>training bow</Bow_TrainingShort.verbs.Verb_Shoot.label>
+  <!-- EN: BB gun bullet -->
+  <Bullet_TrainingBBGun.label>BB gun bullet</Bullet_TrainingBBGun.label>
+  <!-- EN: training BB gun -->
+  <Gun_TrainingBBGun.label>training BB gun</Gun_TrainingBBGun.label>
+  <!-- EN: A simple BB gun used for training ranged combat skills. -->
+  <Gun_TrainingBBGun.description>A simple BB gun used for training ranged combat skills.</Gun_TrainingBBGun.description>
+  <!-- EN: stock -->
+  <Gun_TrainingBBGun.tools.stock.label>stock</Gun_TrainingBBGun.tools.stock.label>
+  <!-- EN: barrel -->
+  <Gun_TrainingBBGun.tools.barrel.label>barrel</Gun_TrainingBBGun.tools.barrel.label>
+  <!-- EN: training BB gun -->
+  <Gun_TrainingBBGun.verbs.Verb_Shoot.label>training BB gun</Gun_TrainingBBGun.verbs.Verb_Shoot.label>
+</LanguageData>

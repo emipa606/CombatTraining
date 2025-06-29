@@ -11,10 +11,10 @@ public class JobDriver_TrainCombat : JobDriver
 {
     private static readonly float trainCombatLearningFactor = .15f;
     private int jobStartTick = -1;
-    public ThingWithComps startingEquippedWeapon;
-    public ThingWithComps trainingWeapon;
+    private ThingWithComps startingEquippedWeapon;
+    private ThingWithComps trainingWeapon;
 
-    public Thing Dummy => job.GetTarget(TargetIndex.A).Thing;
+    private Thing Dummy => job.GetTarget(TargetIndex.A).Thing;
 
     public override void ExposeData()
     {
@@ -34,14 +34,14 @@ public class JobDriver_TrainCombat : JobDriver
         return pawn.Reserve(job.GetTarget(TargetIndex.A), job);
     }
 
-    public bool IsDummyBreaking()
+    private bool isDummyBreaking()
     {
         return Dummy.HitPoints <= Dummy.MaxHitPoints * 0.5;
     }
 
-    public bool IsDummyUsable()
+    private bool isDummyUsable()
     {
-        if (IsDummyBreaking())
+        if (isDummyBreaking())
         {
             return false;
         }
@@ -49,14 +49,14 @@ public class JobDriver_TrainCombat : JobDriver
         return !Dummy.Destroyed;
     }
 
-    public bool IsJobPossible()
+    private bool isJobPossible()
     {
-        if (!IsDummyUsable())
+        if (!isDummyUsable())
         {
             return false;
         }
 
-        if (LearningSaturated())
+        if (learningSaturated())
         {
             return false;
         }
@@ -81,25 +81,25 @@ public class JobDriver_TrainCombat : JobDriver
             CombatTrainingDefOf.TrainCombatDesignationRangedOnly) && pawn.equipment.Primary.def.IsRangedWeapon;
     }
 
-    public bool IsTimeLimitReached()
+    private bool isTimeLimitReached()
     {
         return Find.TickManager.TicksGame > jobStartTick + 5000;
     }
 
-    public bool HasTrainingEnded()
+    private bool hasTrainingEnded()
     {
-        if (IsTimeLimitReached())
+        if (isTimeLimitReached())
         {
             return true;
         }
 
-        return !IsJobPossible();
+        return !isJobPossible();
     }
 
     [DebuggerHidden]
     protected override IEnumerable<Toil> MakeNewToils()
     {
-        //fail if can't do violence
+        //fail if you can't do violence
         AddFailCondition(() => pawn.WorkTagIsDisabled(WorkTags.Violent));
 
         jobStartTick = Find.TickManager.TicksGame;
@@ -118,7 +118,7 @@ public class JobDriver_TrainCombat : JobDriver
         if (startingEquippedWeapon == null ||
             !startingEquippedWeapon.def.IsWithinCategory(CombatTrainingDefOf.TrainingWeapons))
         {
-            trainingWeapon = GetNearestTrainingWeapon(startingEquippedWeapon);
+            trainingWeapon = getNearestTrainingWeapon(startingEquippedWeapon);
             if (trainingWeapon != null && !trainingWeapon.IsForbidden(pawn))
             {
                 //reserve training weapon, goto, and equip
@@ -128,7 +128,7 @@ public class JobDriver_TrainCombat : JobDriver
                     job.SetTarget(TargetIndex.B, trainingWeapon);
                     yield return Toils_Goto.GotoThing(TargetIndex.B, PathEndMode.ClosestTouch)
                         .FailOnDespawnedNullOrForbidden(TargetIndex.B);
-                    yield return CreateEquipToil(TargetIndex.B);
+                    yield return createEquipToil(TargetIndex.B);
                 }
 
                 //reserve previous weapon and set as target c
@@ -143,11 +143,11 @@ public class JobDriver_TrainCombat : JobDriver
         var endOfTraining = Toils_General.Label();
         var gotoCastPos = Toils_Combat.GotoCastPosition(TargetIndex.A, TargetIndex.B, true, 0.95f)
             .EndOnDespawnedOrNull(TargetIndex.A);
-        var ifTrainingDoneJumpToReequip = Toils_Jump.JumpIf(endOfTraining, HasTrainingEnded);
+        var ifTrainingDoneJumpToReequip = Toils_Jump.JumpIf(endOfTraining, hasTrainingEnded);
         var castVerb = Toils_Combat.CastVerb(TargetIndex.A, false);
-        castVerb.AddFinishAction(LearnAttackSkill);
+        castVerb.AddFinishAction(learnAttackSkill);
         var trainingRoomImpressivenessMoodBoost =
-            Toils_General.Do(TryGainCombatTrainingRoomThought);
+            Toils_General.Do(tryGainCombatTrainingRoomThought);
         var dropTrainingWeapon = Toils_General.Do(delegate
         {
             pawn.equipment.TryDropEquipment(pawn.equipment.Primary, out _, pawn.Position, false);
@@ -179,7 +179,7 @@ public class JobDriver_TrainCombat : JobDriver
             () => pawn.inventory.Contains(startingEquippedWeapon));
         yield return Toils_Goto.GotoThing(TargetIndex.C, PathEndMode.ClosestTouch)
             .FailOnDespawnedNullOrForbidden(TargetIndex.C);
-        yield return CreateEquipToil(TargetIndex.C);
+        yield return createEquipToil(TargetIndex.C);
         yield return Toils_Jump.Jump(jobEndedLabel);
 
         yield return reequipSwappedStartingWeapon;
@@ -190,7 +190,7 @@ public class JobDriver_TrainCombat : JobDriver
     /*
      * Calculates the xp gained. seems like shooting was based off 170f and melee of 200f. Just used 200f for consistency
      */
-    private float CalculateXp(Verb verb, Pawn incomingPawn)
+    private static float CalculateXp(Verb verb, Pawn incomingPawn)
     {
         return trainCombatLearningFactor * 200f * verb.verbProps.AdjustedFullCycleTime(verb, incomingPawn);
     }
@@ -198,7 +198,7 @@ public class JobDriver_TrainCombat : JobDriver
     /*
      * Causes pawn to get impressive combat training room mood buff
      */
-    private void TryGainCombatTrainingRoomThought()
+    private void tryGainCombatTrainingRoomThought()
     {
         var room = pawn.GetRoom();
         if (room == null)
@@ -218,7 +218,7 @@ public class JobDriver_TrainCombat : JobDriver
         }
     }
 
-    private bool LearningSaturated()
+    private bool learningSaturated()
     {
         //var verbToUse = pawn.jobs.curJob.verbToUse;
         var saturated = false;
@@ -240,7 +240,7 @@ public class JobDriver_TrainCombat : JobDriver
     /*
      * Causes pawn to learn a combat skill based on the verb of the current job
      */
-    private void LearnAttackSkill()
+    private void learnAttackSkill()
     {
         var verbToUse = pawn.jobs.curJob.verbToUse;
         var xpGained = CalculateXp(verbToUse, pawn);
@@ -264,7 +264,7 @@ public class JobDriver_TrainCombat : JobDriver
     }
 
 
-    private ThingWithComps GetNearestTrainingWeaponOfType(ThingDef weaponType)
+    private ThingWithComps getNearestTrainingWeaponOfType(ThingDef weaponType)
     {
         var req = ThingRequest.ForDef(weaponType);
         return (ThingWithComps)GenClosest.RegionwiseBFSWorker(TargetA.Thing.Position, pawn.Map, req,
@@ -272,19 +272,19 @@ public class JobDriver_TrainCombat : JobDriver
             out _, RegionType.Set_Passable, true);
     }
 
-    private ThingWithComps GetNearestTrainingWeaponMelee()
+    private ThingWithComps getNearestTrainingWeaponMelee()
     {
-        return GetNearestTrainingWeaponOfType(CombatTrainingDefOf.MeleeWeapon_TrainingKnife);
+        return getNearestTrainingWeaponOfType(CombatTrainingDefOf.MeleeWeapon_TrainingKnife);
     }
 
-    private ThingWithComps GetNearestTrainingWeaponRanged()
+    private ThingWithComps getNearestTrainingWeaponRanged()
     {
         ThingWithComps thingWithComps = null;
         ThingDef weaponType;
         if (!pawn.Faction.def.techLevel.IsNeolithicOrWorse())
         {
             weaponType = CombatTrainingDefOf.Gun_TrainingBBGun;
-            thingWithComps = GetNearestTrainingWeaponOfType(weaponType);
+            thingWithComps = getNearestTrainingWeaponOfType(weaponType);
         }
 
         if (thingWithComps != null)
@@ -293,7 +293,7 @@ public class JobDriver_TrainCombat : JobDriver
         }
 
         weaponType = CombatTrainingDefOf.Bow_TrainingShort;
-        thingWithComps = GetNearestTrainingWeaponOfType(weaponType);
+        thingWithComps = getNearestTrainingWeaponOfType(weaponType);
 
         return thingWithComps;
     }
@@ -302,20 +302,20 @@ public class JobDriver_TrainCombat : JobDriver
      * Returns the nearest training weapon.  Enforces training weapons of the same type (melee or ranged) of the
      * weapon passed in, unless the pawn is unarmed.
      */
-    private ThingWithComps GetNearestTrainingWeapon(Thing currentWeapon)
+    private ThingWithComps getNearestTrainingWeapon(Thing currentWeapon)
     {
         ThingWithComps nearestTrainingWeapon = null;
 
         // If the pawn has a melee weapon, look for a training knife.
         if (currentWeapon != null && currentWeapon.def.IsMeleeWeapon)
         {
-            nearestTrainingWeapon = GetNearestTrainingWeaponMelee();
+            nearestTrainingWeapon = getNearestTrainingWeaponMelee();
         }
 
         // If the pawn has a ranged weapon, look for a training ranged weapon.
         if (currentWeapon != null && !currentWeapon.def.IsMeleeWeapon)
         {
-            nearestTrainingWeapon = GetNearestTrainingWeaponRanged();
+            nearestTrainingWeapon = getNearestTrainingWeaponRanged();
         }
 
         // If the pawn does not have a weapon, and the dummy is restricted, look for the appropriate weapon type.
@@ -325,12 +325,12 @@ public class JobDriver_TrainCombat : JobDriver
             if (CombatTrainingController.HasDesignation(TargetThingA,
                     CombatTrainingDefOf.TrainCombatDesignationMeleeOnly))
             {
-                nearestTrainingWeapon = GetNearestTrainingWeaponMelee();
+                nearestTrainingWeapon = getNearestTrainingWeaponMelee();
             }
             else if (CombatTrainingController.HasDesignation(TargetThingA,
                          CombatTrainingDefOf.TrainCombatDesignationRangedOnly))
             {
-                nearestTrainingWeapon = GetNearestTrainingWeaponRanged();
+                nearestTrainingWeapon = getNearestTrainingWeaponRanged();
             }
         }
 
@@ -355,7 +355,7 @@ public class JobDriver_TrainCombat : JobDriver
     /*
      * Returns a toil that equips the target index weapon
      */
-    private Toil CreateEquipToil(TargetIndex index)
+    private Toil createEquipToil(TargetIndex index)
     {
         var equipment = pawn.jobs.curJob.GetTarget(index);
         var toil = new Toil

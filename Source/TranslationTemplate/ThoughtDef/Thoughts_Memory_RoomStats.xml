@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: decent combat training room -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.decent_combat_training_room.label>decent combat training room</TrainedInImpressiveCombatTrainingRoom.stages.decent_combat_training_room.label>
+  <!-- EN: I had a good training session in a decent combat training room. -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.decent_combat_training_room.description>I had a good training session in a decent combat training room.</TrainedInImpressiveCombatTrainingRoom.stages.decent_combat_training_room.description>
+  <!-- EN: slightly impressive combat training room -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.slightly_impressive_combat_training_room.label>slightly impressive combat training room</TrainedInImpressiveCombatTrainingRoom.stages.slightly_impressive_combat_training_room.label>
+  <!-- EN: I had a good training session in a nice combat training room. -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.slightly_impressive_combat_training_room.description>I had a good training session in a nice combat training room.</TrainedInImpressiveCombatTrainingRoom.stages.slightly_impressive_combat_training_room.description>
+  <!-- EN: somewhat impressive combat training room -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.somewhat_impressive_combat_training_room.label>somewhat impressive combat training room</TrainedInImpressiveCombatTrainingRoom.stages.somewhat_impressive_combat_training_room.label>
+  <!-- EN: I had a great training session in an impressive combat training room. -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.somewhat_impressive_combat_training_room.description>I had a great training session in an impressive combat training room.</TrainedInImpressiveCombatTrainingRoom.stages.somewhat_impressive_combat_training_room.description>
+  <!-- EN: very impressive combat training room -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.very_impressive_combat_training_room.label>very impressive combat training room</TrainedInImpressiveCombatTrainingRoom.stages.very_impressive_combat_training_room.label>
+  <!-- EN: I had a a great training session in a very impressive combat training room. -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.very_impressive_combat_training_room.description>I had a a great training session in a very impressive combat training room.</TrainedInImpressiveCombatTrainingRoom.stages.very_impressive_combat_training_room.description>
+  <!-- EN: extremely impressive combat training room -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.extremely_impressive_combat_training_room.label>extremely impressive combat training room</TrainedInImpressiveCombatTrainingRoom.stages.extremely_impressive_combat_training_room.label>
+  <!-- EN: I had a great training session in an extremely impressive combat training room. I could stay there forever. -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.extremely_impressive_combat_training_room.description>I had a great training session in an extremely impressive combat training room. I could stay there forever.</TrainedInImpressiveCombatTrainingRoom.stages.extremely_impressive_combat_training_room.description>
+  <!-- EN: unbelievably impressive combat training room -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.unbelievably_impressive_combat_training_room.label>unbelievably impressive combat training room</TrainedInImpressiveCombatTrainingRoom.stages.unbelievably_impressive_combat_training_room.label>
+  <!-- EN: I had a great training session in an unbelievably impressive combat training room. I could stay there forever. -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.unbelievably_impressive_combat_training_room.description>I had a great training session in an unbelievably impressive combat training room. I could stay there forever.</TrainedInImpressiveCombatTrainingRoom.stages.unbelievably_impressive_combat_training_room.description>
+  <!-- EN: wondrously impressive combat training room -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.wondrously_impressive_combat_training_room.label>wondrously impressive combat training room</TrainedInImpressiveCombatTrainingRoom.stages.wondrously_impressive_combat_training_room.label>
+  <!-- EN: I had a great training session in a wonderful combat training room. I could stay there forever. -->
+  <TrainedInImpressiveCombatTrainingRoom.stages.wondrously_impressive_combat_training_room.description>I had a great training session in a wonderful combat training room. I could stay there forever.</TrainedInImpressiveCombatTrainingRoom.stages.wondrously_impressive_combat_training_room.description>
+</LanguageData>
