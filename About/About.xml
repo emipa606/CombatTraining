@@ -14,7 +14,7 @@
   </supportedVersions>
   <modDependencies />
   <loadAfter />
-  <description>[img]https://i.imgur.com/buuPQel.png[/img]
+  <description>[img]https://i.postimg.cc/1X4HT06h/Info.png[/img]
 Update of Kriils mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=1542761308
 
@@ -22,20 +22,20 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=1542761308
 - For a version without the training-weapon mechanic, please use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2570757153]Combat Training - Forked (Lite)[/url] by jastro
 - Fixed pawns trying to train ranged combat with shield-belt equipped
 
-[img]https://i.imgur.com/pufA0kM.png[/img]
+[img]https://i.postimg.cc/8csH3dWV/Notice.png[/img]
 
 [table]
     [tr]
-        [td][url=https://dsc.gg/mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
-        [td][url=https://github.com/emipa606/CombatTraining][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+        [td][url=https://discord.gg/h5TY6DA][img]https://i.postimg.cc/T1h9SjbF/Discord.png[/img][/url][/td]
+        [td][url=https://github.com/emipa606/CombatTraining][img]https://i.postimg.cc/fykKF7X4/Github.png[/img][/url][/td]
     [/tr]
     [tr]
-        [td][img]https://i.imgur.com/WjDSfUn.png[/img][/td]
-        [td][img]https://i.imgur.com/Be8E2qJ.png[/img][/td]
+        [td][img]https://i.postimg.cc/MHXD40RW/Safe-To-Add.png[/img][/td]
+        [td][img]https://i.postimg.cc/brdTM0bP/Remove-May-Work.png[/img][/td]
     [/tr]
 [/table]
 	
-[img]https://i.imgur.com/Z4GOv8H.png[/img]
+[img]https://i.postimg.cc/hvhrw8xB/Original-Description.png[/img]
 [h1]This mod adds a new work type to let you train your combat skills. Compatible with RimWorld [1.2][/h1]
 
 [h1]Fix: Combat dummies no longer breakdown and require components to repair.[/h1]
@@ -89,11 +89,11 @@ Bug Fix: A bug was fixed which caused pawns to not retrieve their old weapons if
 [h1]Contributers[/h1]
 aph3rson, @Menhi, kfish#2446, KongMD#2541, Borattata, Heremeus and AtomicGu
 
-[img]https://i.imgur.com/PwoNOj4.png[/img]
+[img]https://i.postimg.cc/x8qR7GH9/Reporting-Issues.png[/img]
 [list]
 [*] See if the the error persists if you just have this mod and its requirements active.
 [*] If not, try adding your other mods until it happens again.
-[*] Post your error-log using [url=https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] or the standalone [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Uploader[/url] and command Ctrl+F12
+[*] Always post your log using the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Log Uploader[/url]
 [*] For best support, please use the Discord-channel for error-reporting.
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
@@ -101,5 +101,5 @@ aph3rson, @Menhi, kfish#2446, KongMD#2541, Borattata, Heremeus and AtomicGu
 [/list] 
 
 [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2778569619][img]https://img.shields.io/github/v/release/emipa606/CombatTraining?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url] | tags:  combat skills</description>
-  <modVersion IgnoreIfNoMatchingField="True">1.6.0</modVersion>
+  <modVersion IgnoreIfNoMatchingField="True">1.6.1</modVersion>
 </ModMetaData>

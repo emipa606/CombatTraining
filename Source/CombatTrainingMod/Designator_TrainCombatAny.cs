@@ -9,7 +9,7 @@ public class Designator_TrainCombatAny : Designator_BaseTrainCombat
     {
         defaultLabel = "DesignatorTrainCombat".Translate();
         defaultDesc = "DesignatorTrainCombatDesc".Translate();
-        icon = icon = TexCommand.Draft;
         defOf = CombatTrainingDefOf.TrainCombatDesignation;
+        icon = TexCommand.Draft;
     }
 }

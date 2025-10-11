@@ -3,7 +3,13 @@
   "CanAdd": "0",
   "CanRemove": "2",
   "PreviewVersion": "1.6",
-  "LastXmlCleaning": "2025-06-29T22:48:43.2586699+02:00",
+  "LastXmlCleaning": "2025-10-11T20:49:51.7880267+02:00",
   "SocialImageSet": true,
-  "SearchTags": " combat skills"
+  "SearchTags": " combat skills",
+  "Patches": false,
+  "Defs": true,
+  "Assemblies": true,
+  "LinesOfCode": 37643,
+  "LinesOfXML": 16618,
+  "CodeBaseSize": 74
 }

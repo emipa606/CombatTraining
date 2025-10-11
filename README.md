@@ -1,6 +1,6 @@
 # [Combat Training (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2778569619)
 
-![Image](https://i.imgur.com/buuPQel.png)
+![Image](https://i.postimg.cc/1X4HT06h/Info.png)
 
 Update of Kriils mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=1542761308
@@ -9,9 +9,9 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=1542761308
 - For a version without the training-weapon mechanic, please use [Combat Training - Forked (Lite)](https://steamcommunity.com/sharedfiles/filedetails/?id=2570757153) by jastro
 - Fixed pawns trying to train ranged combat with shield-belt equipped
 
-![Image](https://i.imgur.com/pufA0kM.png)
+![Image](https://i.postimg.cc/8csH3dWV/Notice.png)
 	
-![Image](https://i.imgur.com/Z4GOv8H.png)
+![Image](https://i.postimg.cc/hvhrw8xB/Original-Description.png)
 
 # This mod adds a new work type to let you train your combat skills. Compatible with RimWorld [1.2]
 
@@ -77,13 +77,13 @@ Bug Fix: A bug was fixed which caused pawns to not retrieve their old weapons if
 
 aph3rson, @Menhi, kfish#2446, KongMD#2541, Borattata, Heremeus and AtomicGu
 
-![Image](https://i.imgur.com/PwoNOj4.png)
+![Image](https://i.postimg.cc/x8qR7GH9/Reporting-Issues.png)
 
 
 
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using [HugsLib](https://steamcommunity.com/workshop/filedetails/?id=818773962) or the standalone [Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) and command Ctrl+F12
+-  Always post your log using the [Log Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404)
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.

@@ -3,7 +3,7 @@
   <DesignationDef>
     <!-- Leaving named the same to ensure backwards compatibility -->
     <defName>TrainCombatDesignation</defName>
-    <texturePath>Designations/Plan</texturePath>
+    <texturePath>CombatTrainingAttackDesignator</texturePath>
     <!-- Appears on thing -->
     <targetType>Thing</targetType>
     <removeIfBuildingDespawned>true</removeIfBuildingDespawned>

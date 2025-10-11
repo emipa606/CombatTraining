@@ -9,7 +9,7 @@ public class Designator_TrainCombatMeleeOnly : Designator_BaseTrainCombat
     {
         defaultLabel = "DesignatorTrainCombatMeleeOnly".Translate();
         defaultDesc = "DesignatorTrainCombatMeleeOnlyDesc".Translate();
-        icon = icon = TexCommand.AttackMelee;
+        icon = TexCommand.AttackMelee;
         defOf = CombatTrainingDefOf.TrainCombatDesignationMeleeOnly;
     }
 }

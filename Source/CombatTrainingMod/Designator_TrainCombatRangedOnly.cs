@@ -9,7 +9,7 @@ public class Designator_TrainCombatRangedOnly : Designator_BaseTrainCombat
     {
         defaultLabel = "DesignatorTrainCombatRangedOnly".Translate();
         defaultDesc = "DesignatorTrainCombatRangedOnlyDesc".Translate();
-        icon = icon = TexCommand.Attack;
+        icon = TexCommand.Attack;
         defOf = CombatTrainingDefOf.TrainCombatDesignationRangedOnly;
     }
 }
