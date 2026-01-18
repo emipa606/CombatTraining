@@ -1,5 +1,8 @@
 # Changelog for CombatTraining
 
+1.6.2 - Fixed german translation
+
+
 1.6.1 - Fixed designator when both training types are selected
 
 

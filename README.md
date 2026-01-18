@@ -1,6 +1,6 @@
 # [Combat Training (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2778569619)
 
-![Image](https://i.postimg.cc/1X4HT06h/Info.png)
+![Image](https://img.litet.net/logos/Info.png)
 
 Update of Kriils mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=1542761308
@@ -9,9 +9,9 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=1542761308
 - For a version without the training-weapon mechanic, please use [Combat Training - Forked (Lite)](https://steamcommunity.com/sharedfiles/filedetails/?id=2570757153) by jastro
 - Fixed pawns trying to train ranged combat with shield-belt equipped
 
-![Image](https://i.postimg.cc/8csH3dWV/Notice.png)
+![Image](https://img.litet.net/logos/Notice.png)
 	
-![Image](https://i.postimg.cc/hvhrw8xB/Original-Description.png)
+![Image](https://img.litet.net/logos/OriginalDescription.png)
 
 # This mod adds a new work type to let you train your combat skills. Compatible with RimWorld [1.2]
 
@@ -77,7 +77,7 @@ Bug Fix: A bug was fixed which caused pawns to not retrieve their old weapons if
 
 aph3rson, @Menhi, kfish#2446, KongMD#2541, Borattata, Heremeus and AtomicGu
 
-![Image](https://i.postimg.cc/x8qR7GH9/Reporting-Issues.png)
+![Image](https://img.litet.net/logos/ReportingIssues.png)
 
 
 
@@ -91,4 +91,4 @@ aph3rson, @Menhi, kfish#2446, KongMD#2541, Borattata, Heremeus and AtomicGu
 
  
 
-[![Image](https://img.shields.io/github/v/release/emipa606/CombatTraining?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2778569619) | tags:  combat skills
+[![Image](https://img.shields.io/github/v/release/emipa606/CombatTraining?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2778569619) | tags: combat skills

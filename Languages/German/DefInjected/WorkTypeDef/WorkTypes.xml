@@ -7,7 +7,7 @@ Hinzugefügt von der Mod Combat Training.</TrainingCombat.description>
   <!-- EN: training combat -->
   <TrainingCombat.gerundLabel>Training Kampf</TrainingCombat.gerundLabel>
   <!-- EN: Train Combat -->
-  <TrainingCombat.labelShort>Zug Kampf</TrainingCombat.labelShort>
+  <TrainingCombat.labelShort>Trainieren</TrainingCombat.labelShort>
   <!-- EN: Combat trainer -->
   <TrainingCombat.pawnLabel>Kampf-Trainer</TrainingCombat.pawnLabel>
   <TrainingCombat.verb>trainieren Kampf</TrainingCombat.verb>
