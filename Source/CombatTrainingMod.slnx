@@ -6,4 +6,39 @@
     <BuildType Name="Release" />
   </Configurations>
   <Project Path="CombatTrainingMod/CombatTrainingMod.csproj" Type="d8659606-dece-48ac-a52c-0c19e6f70aff" />
+  <Folder Name="/XML/1.6/Defs/Rooms/">
+    <File Path="../1.6/Defs/Rooms/RoomRoles.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/WorkGiverDefs/">
+    <File Path="../1.6/Defs/WorkGiverDefs/WorkGivers.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/ThingCategoryDefs/">
+    <File Path="../1.6/Defs/ThingCategoryDefs/ThingCategories.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/Misc/Designations/">
+    <File Path="../1.6/Defs/Misc/Designations/Designations.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/JobDefs/">
+    <File Path="../1.6/Defs/JobDefs/Jobs_Misc.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/ThingDefs_Buildings/">
+    <File Path="../1.6/Defs/ThingDefs_Buildings/Buildings_Misc.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/WorkTypeDefs/">
+    <File Path="../1.6/Defs/WorkTypeDefs/WorkTypes.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/ThoughtDefs/">
+    <File Path="../1.6/Defs/ThoughtDefs/Thoughts_Memory_RoomStats.xml" />
+  </Folder>
+  <Folder Name="/XML/Languages/English/Keyed/">
+    <File Path="../Languages/English/Keyed/CombatDummy.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/ThingDefs_Misc/Weapons/">
+    <File Path="../1.6/Defs/ThingDefs_Misc/Weapons/BaseTrainingWeapons.xml" />
+    <File Path="../1.6/Defs/ThingDefs_Misc/Weapons/MeleeTraining.xml" />
+    <File Path="../1.6/Defs/ThingDefs_Misc/Weapons/RangedTraining.xml" />
+  </Folder>
 </Solution>

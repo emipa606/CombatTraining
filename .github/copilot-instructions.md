@@ -1,44 +1,55 @@
-# GitHub Copilot Instructions for Combat Training (Continued) Mod
+# GitHub Copilot Instructions for RimWorld Mod: Combat Training (Continued)
 
 ## Mod Overview and Purpose
 
-The "Combat Training (Continued)" mod is a continuation and enhancement of the original Combat Training mod by Kriil. This mod introduces a dedicated work type for colonists in RimWorld, enabling them to train their combat skills using combat dummies. The mod aims to enhance the gameplay by providing a realistic and balanced way to improve colonists' melee and shooting skills outside of combat scenarios.
+Combat Training (Continued) is an updated version of the original mod by Kriils. It enhances the combat-training mechanics of RimWorld by introducing a work type dedicated to training combat skills. This mod is designed to provide a more immersive and realistic approach to developing your colonists' melee and shooting skills.
 
 ## Key Features and Systems
 
-1. **Combat Work Type**: Colonists can prioritize combat training as a work activity like any other.
-2. **Combat Dummies**: Train combat skills by attacking dummies. These can be customized for melee, ranged, or both.
-3. **Training Weapons**: Craft non-lethal training weapons to ensure safe training without friendly fire.
-4. **Combat Training Room**: Assign rooms as Combat Training Rooms by placing dummies, which provide a mood buff to colonists.
-5. **Skill Saturation**: Training ends when the daily XP cap is reached, with adjustments for colonists' passion levels.
-6. **Weapon Management**: Automated weapon selection and switching to and from training weapons ensure efficient training sessions.
+- **Combat Dummies**: Construct combat dummies that colonists can use to train melee and ranged combat skills. Dummies are categorized into melee-only, ranged-only, or both, and are available in the Misc tab.
+- **Training Weapons**: Craft non-lethal training weapons that ensure no friendly fire incidents occur during practice.
+- **Combat Training Priority**: Training can be prioritized like any other work via the Work tab.
+- **Combat Training Room Role**: Enhance rooms with a combat dummy to designate them as Combat Training Rooms, providing colonists with a mood buff.
+- **Weapon and Dummy Interactions**: Colonists intuitively switch between real and training weapons based on dummy designations and availability.
 
 ## Coding Patterns and Conventions
 
-- **Class and Method Naming**: Classes and methods follow PascalCase naming conventions for clarity and consistency.
-- **Commented Code**: Comments are used to describe the purpose of classes and methods, particularly in complex logic sections.
-- **Disposable Patterns**: The use of private methods for logical checks, like `isDummyUsable()` and `isJobPossible()`, reduces redundancy and enhances readability.
-- **Static Classes for Shared Logic**: Utility classes like `CompatibilityUtility` and `CombatTrainingTracker` manage shared logic, keeping the code modular and maintainable.
+- **C# Class Structure**: Classes such as `Building_CombatDummy`, `CombatTrainingController`, and `Designator_TrainCombatXXX` encapsulate different aspects and functionalities of the mod.
+- **Method Names**: Methods are prefixed with verbs reflecting the action they perform, such as `determineDesignation`, `tryGainCombatTrainingRoomThought`, and `isDummyUsable`.
+- **Comments and Documentation**: Code is annotated with comments to improve readability and understanding, especially in classes like `CombatTrainingTracker`.
 
 ## XML Integration
 
-XML is used for integrating new items and work types:
-- **Defs**: XML files define new training weapons, combat dummies, and job activities. Refer to files like `CombatTrainingDefOf.cs` for examples.
-- **Translations**: XML support for translations allows mods to provide multi-language support, as seen with the Chinese Simplified translation addition.
+- **Def Files**: `TrainCombatDesignatorDef` manages the XML-based definitions relevant to the mod, linking game assets to in-game functionality.
+- **Role Integration**: The mod leverages XML for defining new roles and extensions, such as room roles for the Combat Training Room.
 
 ## Harmony Patching
 
-Harmony is a critical tool for modding C# games like RimWorld:
-- **Method Patching**: Use Harmony to patch game methods, allowing mod-specific functionality to be either added or modified without directly altering game code.
-- **Examples**: Ensure trained pawns revert to their original state post-training or disable features like friendly fire during training sessions.
+- **Harmony Usage**: Mods that require altering base game behavior utilize Harmony patches. This mod may employ Harmony to dynamically adjust or patch existing capabilities or introduce new functionalities seamlessly.
 
 ## Suggestions for Copilot
 
-To further enhance productivity when contributing to the mod:
+- **Code Completion**: Offer code completion for common patterns such as RimWorld-designated verbs and noun pairs like `CreateDesignation` or `CheckSkillLevel`.
+- **Suggestion Context**: Generate suggestions for integrating new training mechanics using existing patterns, ensuring consistency and compatibility.
+- **Debugging Assistance**: Provide real-time debugging insights or suggestions to help resolve potential issues promptly, such as logging or exception handling.
+- **XML Editing**: Assist with schema-aware XML editing, ensuring accurate and typo-free def entries and references.
 
-- **Code Pattern Detection**: Encourage Copilot to suggest code patterns commonly used in this project, such as private methods for logical checks.
-- **XML Support**: Enhance Copilot’s suggestions when dealing with XML files related to RimWorld defs and translations.
-- **Suggesting Modifications**: When working on Harmony patches, guide Copilot to suggest method prefixes, postfixes, and transpilers as appropriate.
-- **Common Bug Fixes**: Enable Copilot to draw from the community-provided bug fixes to suggest known solutions to common issues, such as preventing non-canonical dummies from breaking.
+## Miscellaneous
 
-By following these detailed instructions, contributors can maintain consistency and enhance the overall quality and scope of the Combat Training (Continued) Mod.
+- **Combat Mod Balance**: The mod achieves balance by making combat training a labor-intensive task that consumes colonists' time and resources.
+- **Community Contributions**: It has integrated various community-made enhancements that improve gameplay and compatibility with other popular RimWorld mods.
+- **Support**: For troubleshooting or support, it's recommended to use the mod's dedicated Discord channel for error reporting and to post solutions to the GitHub repository for community benefit.
+
+By following these instructions and utilizing library dependencies effectively, GitHub Copilot can assist in maintaining and enhancing the Combat Training (Continued) mod to deliver an engaging gameplay experience. 
+
+---
+
+*Contributors*: aph3rson, @Menhi, kfish#2446, KongMD#2541, Borattata, Heremeus, AtomicGu
+
+## Project Solution Guidelines
+- Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
+- Use these in-solution XML files as the primary files for reference and modification.
+- The `.github/copilot-instructions.md` file is included in the solution under the `.github` solution folder, so it should be read/modified from within the solution instead of using paths outside the solution. Update this file once only, as it and the parent-path solution reference point to the same file in this workspace.
+- When making functional changes in this mod, ensure the documented features stay in sync with implementation; use the in-solution `.github` copy as the primary file.
+- In the solution is also a project called Assembly-CSharp, containing a read-only version of the decompiled game source, for reference and debugging purposes.
+- For any new documentation, update this copilot-instructions.md file rather than creating separate documentation files.

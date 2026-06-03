@@ -1,5 +1,8 @@
 # Changelog for CombatTraining
 
+1.6.3 - Pawns should no longer get xp when not able to attack the dummy during training
+
+
 1.6.2 - Fixed german translation
 
 

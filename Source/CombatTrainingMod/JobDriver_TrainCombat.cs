@@ -144,7 +144,8 @@ public class JobDriver_TrainCombat : JobDriver
         var gotoCastPos = Toils_Combat.GotoCastPosition(TargetIndex.A, TargetIndex.B, true, 0.95f)
             .EndOnDespawnedOrNull(TargetIndex.A);
         var ifTrainingDoneJumpToReequip = Toils_Jump.JumpIf(endOfTraining, hasTrainingEnded);
-        var castVerb = Toils_Combat.CastVerb(TargetIndex.A, false);
+        var castVerb = Toils_Combat.CastVerb(TargetIndex.A, false)
+            .FailOn(() => !GenSight.LineOfSightToThing(pawn.Position, TargetThingA, pawn.Map));
         castVerb.AddFinishAction(learnAttackSkill);
         var trainingRoomImpressivenessMoodBoost =
             Toils_General.Do(tryGainCombatTrainingRoomThought);
@@ -238,11 +239,12 @@ public class JobDriver_TrainCombat : JobDriver
     }
 
     /*
-     * Causes pawn to learn a combat skill based on the verb of the current job
+     * Causes pawn to learn a combat skill based on the verb of the current job.
      */
     private void learnAttackSkill()
     {
         var verbToUse = pawn.jobs.curJob.verbToUse;
+
         var xpGained = CalculateXp(verbToUse, pawn);
         try
         {
