@@ -1,50 +1,83 @@
-# GitHub Copilot Instructions for RimWorld Mod: Combat Training (Continued)
+# GitHub Copilot Instructions for Combat Training (Continued) Mod
 
 ## Mod Overview and Purpose
-
-Combat Training (Continued) is an updated version of the original mod by Kriils. It enhances the combat-training mechanics of RimWorld by introducing a work type dedicated to training combat skills. This mod is designed to provide a more immersive and realistic approach to developing your colonists' melee and shooting skills.
+Combat Training (Continued) is an update to Kriil's mod, adding Quality of Life (QOL) features from the unupdated Combat Training mod forked by Eltech. This mod introduces a new work type to train combat skills, including both melee and shooting skills. It also includes fixes for pawns trying to train ranged combat with shield-belt-equipped units and ensures that combat dummies no longer break down and require components to repair.
 
 ## Key Features and Systems
-
-- **Combat Dummies**: Construct combat dummies that colonists can use to train melee and ranged combat skills. Dummies are categorized into melee-only, ranged-only, or both, and are available in the Misc tab.
-- **Training Weapons**: Craft non-lethal training weapons that ensure no friendly fire incidents occur during practice.
-- **Combat Training Priority**: Training can be prioritized like any other work via the Work tab.
-- **Combat Training Room Role**: Enhance rooms with a combat dummy to designate them as Combat Training Rooms, providing colonists with a mood buff.
-- **Weapon and Dummy Interactions**: Colonists intuitively switch between real and training weapons based on dummy designations and availability.
+- **Combat Training Work Type**: Allows colonists to train their combat skills by attacking combat dummies.
+- **Designation System**: Colonists can be designated to train with melee-only, ranged-only, or both types of combat dummies.
+- **Training Weapons**: Pawns can use either real weapons or crafted training weapons that cause no damage.
+- **Combat Dummy Rooms**: Adding a combat dummy to a room gives that room the Combat Training Room role, providing a mood buff for the colonists.
+- **Skill Saturation**: Colonists will stop training when their skill level has been saturated for the day (4000xp).
+- **Weapon Selection Rules**: Automatically selects appropriate training weapons based on the dummy's designation and the colonist's current weapon.
+- **Bug Fixes and Enhancements**: Includes various bug fixes and community enhancements to improve the mod's functionality and balance.
 
 ## Coding Patterns and Conventions
-
-- **C# Class Structure**: Classes such as `Building_CombatDummy`, `CombatTrainingController`, and `Designator_TrainCombatXXX` encapsulate different aspects and functionalities of the mod.
-- **Method Names**: Methods are prefixed with verbs reflecting the action they perform, such as `determineDesignation`, `tryGainCombatTrainingRoomThought`, and `isDummyUsable`.
-- **Comments and Documentation**: Code is annotated with comments to improve readability and understanding, especially in classes like `CombatTrainingTracker`.
+- **Namespace and Assembly**: Ensure that all classes and methods are correctly namespaced to avoid conflicts.
+- **Documentation**: Use XML documentation comments for classes, methods, and properties to improve code readability and maintainability.
+- **Error Handling**: Implement robust error handling to manage unexpected situations gracefully.
+- **Performance Optimization**: Optimize code to ensure smooth performance, especially in scenarios with multiple pawns and complex interactions.
 
 ## XML Integration
-
-- **Def Files**: `TrainCombatDesignatorDef` manages the XML-based definitions relevant to the mod, linking game assets to in-game functionality.
-- **Role Integration**: The mod leverages XML for defining new roles and extensions, such as room roles for the Combat Training Room.
+- **Defs Files**: The mod uses XML files to define various aspects such as job definitions, designation definitions, room roles, thing categories, and thing definitions.
+- **Def Types**: Ensure that all def types are correctly defined and integrated into the game's data system.
+- **Def Exposures**: Use the `ExposeData` method to serialize and deserialize def data, ensuring that mod settings persist across sessions.
 
 ## Harmony Patching
-
-- **Harmony Usage**: Mods that require altering base game behavior utilize Harmony patches. This mod may employ Harmony to dynamically adjust or patch existing capabilities or introduce new functionalities seamlessly.
+- **Patch Targets**: Use Harmony to patch existing RimWorld methods and constructors to introduce new functionality or fix bugs.
+- **Patch Naming**: Clearly name patches to identify their purpose and impact.
+- **Patch Order**: Ensure that patches are applied in the correct order to avoid conflicts or unintended side effects.
 
 ## Suggestions for Copilot
+- **Code Completion**: Use Copilot for code completion when implementing new features or fixing bugs. Ensure that the generated code aligns with the coding patterns and conventions.
+- **Def Creation**: Utilize Copilot to generate XML def files for new job definitions, designation definitions, room roles, and thing definitions.
+- **Patch Creation**: Use Copilot to assist in creating Harmony patches, ensuring that patches are correctly targeted and named.
+- **Documentation**: Use Copilot to generate XML documentation comments for classes, methods, and properties to improve code readability and maintainability.
+- **Error Handling**: Use Copilot to assist in implementing robust error handling for unexpected situations.
 
-- **Code Completion**: Offer code completion for common patterns such as RimWorld-designated verbs and noun pairs like `CreateDesignation` or `CheckSkillLevel`.
-- **Suggestion Context**: Generate suggestions for integrating new training mechanics using existing patterns, ensuring consistency and compatibility.
-- **Debugging Assistance**: Provide real-time debugging insights or suggestions to help resolve potential issues promptly, such as logging or exception handling.
-- **XML Editing**: Assist with schema-aware XML editing, ensuring accurate and typo-free def entries and references.
+## Example XML File
+xml
+<Defs>
+    <JobDef>
+        <defName>TrainCombat</defName>
+        <label>Train Combat</label>
+        <description>Train your colonist's combat skills by attacking combat dummies.</description>
+        <category>Work</category>
+        <workType>CombatTraining</workType>
+        <doUntilDone>true</doUntilDone>
+        <makeTargetPrerotation>false</makeTargetPrerotation>
+        <checkTargetWhileActive>true</checkTargetWhileActive>
+        <checkOverrideOnJobStart>true</checkOverrideOnJobStart>
+        <checkOverrideOnResume>true</checkOverrideOnResume>
+        <checkOverrideOnFinish>true</checkOverrideOnFinish>
+        <reportString>Training combat at {TargetA}</reportString>
+    </JobDef>
+</Defs>
 
-## Miscellaneous
 
-- **Combat Mod Balance**: The mod achieves balance by making combat training a labor-intensive task that consumes colonists' time and resources.
-- **Community Contributions**: It has integrated various community-made enhancements that improve gameplay and compatibility with other popular RimWorld mods.
-- **Support**: For troubleshooting or support, it's recommended to use the mod's dedicated Discord channel for error reporting and to post solutions to the GitHub repository for community benefit.
+## Example Harmony Patch
+csharp
+using HarmonyLib;
+using RimWorld;
+using Verse;
 
-By following these instructions and utilizing library dependencies effectively, GitHub Copilot can assist in maintaining and enhancing the Combat Training (Continued) mod to deliver an engaging gameplay experience. 
+namespace CombatTrainingMod
+{
+    [HarmonyPatch(typeof(Pawn_JobTracker), nameof(Pawn_JobTracker.StartJob))]
+    public static class Pawn_JobTracker_StartJob_Patch
+    {
+        public static void Postfix(Pawn_JobTracker __instance, Job job)
+        {
+            if (job.def.defName == "TrainCombat")
+            {
+                // Custom logic for combat training
+            }
+        }
+    }
+}
 
----
 
-*Contributors*: aph3rson, @Menhi, kfish#2446, KongMD#2541, Borattata, Heremeus, AtomicGu
+By following these guidelines, you can effectively use GitHub Copilot to enhance the Combat Training (Continued) mod, ensuring that new features are implemented efficiently and existing code is well-maintained.
 
 ## Project Solution Guidelines
 - Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
@@ -53,3 +86,11 @@ By following these instructions and utilizing library dependencies effectively, 
 - When making functional changes in this mod, ensure the documented features stay in sync with implementation; use the in-solution `.github` copy as the primary file.
 - In the solution is also a project called Assembly-CSharp, containing a read-only version of the decompiled game source, for reference and debugging purposes.
 - For any new documentation, update this copilot-instructions.md file rather than creating separate documentation files.
+
+
+## Hard rules (must follow)
+- Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.
+- Prefer minimal reads: read only the smallest code region needed (around the suspicious lines).
+- When mentioning SonarQube issues, automatically use the SonarQube MCP service to fetch and address issues instead of making inferred fixes without querying SonarQube first.
+- When mentioning the rimworld log, automatically use the Rimworld MCP service to fetch the log.
+

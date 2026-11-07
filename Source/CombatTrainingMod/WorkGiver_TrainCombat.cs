@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -7,7 +8,7 @@ namespace KriilMod_CD;
 
 public class WorkGiver_TrainCombat : WorkGiver_Scanner
 {
-    private bool isDummyUsable(Thing dummy)
+    private static bool isDummyUsable(Thing dummy)
     {
         if (IsDummyBreaking(dummy))
         {
@@ -23,7 +24,7 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
     }
 
 
-    private bool isValidJobTarget(Thing dummy, Pawn pawn)
+    private static bool isValidJobTarget(Thing dummy, Pawn pawn)
     {
         if (pawn == null || dummy == null)
         {
@@ -171,12 +172,9 @@ public class WorkGiver_TrainCombat : WorkGiver_Scanner
     public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
     {
         var desList = pawn.Map.designationManager.AllDesignations;
-        foreach (var des in desList)
+        foreach (var des in desList.Where(d => isValidDesignation(d.def)))
         {
-            if (isValidDesignation(des.def))
-            {
-                yield return des.target.Thing;
-            }
+            yield return des.target.Thing;
         }
     }
 }

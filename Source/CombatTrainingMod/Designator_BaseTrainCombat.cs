@@ -25,9 +25,9 @@ public class Designator_BaseTrainCombat : Designator
     /*
      * Designates a thing at the given cell.  Checks are made to ensure that a thing at the given cell can be designated with the TrainCombatDesignation
      */
-    public override void DesignateSingleCell(IntVec3 loc)
+    public override void DesignateSingleCell(IntVec3 c)
     {
-        var combatDummy = GetDesignatable(loc);
+        var combatDummy = GetDesignatable(c);
         DesignateThing(combatDummy);
     }
 
@@ -64,14 +64,14 @@ public class Designator_BaseTrainCombat : Designator
     /*
      * Returns true if the given cell is inbounds, not fogged and a thing at the given cell can be designated
      */
-    public override AcceptanceReport CanDesignateCell(IntVec3 c)
+    public override AcceptanceReport CanDesignateCell(IntVec3 loc)
     {
-        if (!c.InBounds(Map) || c.Fogged(Map))
+        if (!loc.InBounds(Map) || loc.Fogged(Map))
         {
             return false;
         }
 
-        if (!CanDesignateThing(GetDesignatable(c)).Accepted)
+        if (!CanDesignateThing(GetDesignatable(loc)).Accepted)
         {
             return "MessageMustDesignateCombatDummy".Translate();
         }

@@ -91,4 +91,4 @@ aph3rson, @Menhi, kfish#2446, KongMD#2541, Borattata, Heremeus and AtomicGu
 
  
 
-[![Image](https://img.shields.io/github/v/release/emipa606/CombatTraining?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2778569619) | tags: combat skills
+[![Image](https://img.shields.io/github/v/release/emipa606/CombatTraining?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2778569619) | combat skills

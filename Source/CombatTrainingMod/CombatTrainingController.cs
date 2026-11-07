@@ -4,7 +4,7 @@ using Verse;
 namespace KriilMod_CD;
 
 [StaticConstructorOnStartup]
-public class CombatTrainingController
+public static class CombatTrainingController
 {
     public static bool HasDesignation(Thing thing, DesignationDef def)
     {

@@ -26,7 +26,7 @@ public static class CompatibilityUtility
             isGuest = ((Func<bool>)(() =>
             {
                 // Copied from Hospitality.GuestUtility
-                if (!isValidGuestPawn(pawn))
+                if (!pawn.isValidGuestPawn())
                 {
                     return false;
                 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-  <TrainingCombat.label>战斗训练</TrainingCombat.label>
   <TrainingCombat.description>用一个假人进行战斗训练。选中一个假人并点击战斗训练，或者使用&lt;b>建筑规划>命令>进行战斗训练&lt;/b>来指定训练使用的假人。\n由“Combat Training”模组新增。</TrainingCombat.description>
   <TrainingCombat.labelShort>战斗训练</TrainingCombat.labelShort>
   <TrainingCombat.pawnLabel>战斗学徒</TrainingCombat.pawnLabel>

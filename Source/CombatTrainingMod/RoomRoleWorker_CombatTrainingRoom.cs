@@ -1,4 +1,5 @@
-﻿using Verse;
+﻿using System.Linq;
+using Verse;
 
 namespace KriilMod_CD;
 
@@ -8,12 +9,9 @@ public class RoomRoleWorker_CombatTrainingRoom : RoomRoleWorker
     {
         var num = 0;
         var containedAndAdjacentThings = room.ContainedAndAdjacentThings;
-        foreach (var thing in containedAndAdjacentThings)
+        foreach (var thing in containedAndAdjacentThings.Where(t => t is Building_CombatDummy))
         {
-            if (thing is Building_CombatDummy)
-            {
-                num++;
-            }
+            num++;
         }
 
         return num * 5f;
